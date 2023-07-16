@@ -1,0 +1,28 @@
+.reviews-div {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card {
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #66BFBF;
+  font-size: large;
+  color: white;
+  font-weight: 600;
+  margin: 10px auto;
+}
+
+.scores {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+span {
+  margin: 10px;
+}
