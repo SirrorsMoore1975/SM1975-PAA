@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Navbar from '../components/Navbar';
@@ -10,8 +10,6 @@ import DropdownMenu from '../components/DropdownMenu';
 import Radio from '../components/Radio';
 import "./Form.css";
 
-
-// this object will get sent to the server with data for database
 const reviewData = {
   provider_id: "", 
   reviewer_name: "", 
@@ -28,14 +26,10 @@ const Form = () => {
   const navigate = useNavigate();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // SCORE INPUT STATE // Overall, Ease of Use, Coverage
   const [overAllScore, getOverAllScore] = useState(0);
   const setOverAllScore = (score) =>{
       getOverAllScore(score);
-      
       reviewData.overall = Number(score);
-      
   }
 
   const [EOUScore, getEOUScore] = useState(0);
@@ -110,10 +104,6 @@ const Form = () => {
     setServerResponse(response.data);
   };
 
-  // USE EFFECT
-  
-
-    
   return (
     <div>  
       {

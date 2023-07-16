@@ -2,14 +2,8 @@ import React from 'react';
 import './Card.css'
 
 const Card = (props) => {
-  const { description, divClassName, onClick, onChange, cardName, imgClassName, img_url, altValue, averageScoreClassName ,averageScore, buttonClassName  } = props;
-  /*
-  You can console.log(className) to see what it returns
-  You can also console.log(props) to see what object passed
+  const { description, onClick, onChange, cardName, imgClassName, img_url, altValue, averageScoreClassName ,averageScore, buttonClassName  } = props;
   
-  */
-  //console.log("😀",value);
-  //console.log("😍",props);
   return (
     <>
       <div
@@ -40,5 +34,4 @@ Card.defaultProps = {
   buttonClassName: "",
 };
 
-  export default Card;
-  
+export default Card;  

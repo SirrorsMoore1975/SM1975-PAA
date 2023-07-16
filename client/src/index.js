@@ -1,7 +1,7 @@
 import './index.css';
 import React from 'react';
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Form from "./pages/Form";
 import AU from "./pages/AU";
