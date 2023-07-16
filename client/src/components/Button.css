@@ -1,0 +1,19 @@
+.button {
+  width: 100px;
+  margin: 15px;
+  padding: 10px;
+  align-self: flex-end;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.review {
+  width: 150px;
+  align-self: center;
+}
+
+.submit {
+  width: 100px;
+  align-self: center;
+}

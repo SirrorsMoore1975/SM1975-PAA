@@ -1,0 +1,9 @@
+.radio {
+  font-size: mdeium;
+  accent-color: #FF0063;
+  text-align:center;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+

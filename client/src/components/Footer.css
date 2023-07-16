@@ -1,0 +1,10 @@
+.footer {
+  margin: 0px;
+  padding: 20px;
+  background-color: #FF0063;
+  color: white;
+}
+
+.thanks {
+  justify-content: flex-end;
+}
