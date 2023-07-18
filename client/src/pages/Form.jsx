@@ -26,31 +26,31 @@ const Form = () => {
   const navigate = useNavigate();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [overAllScore, getOverAllScore] = useState(0);
+  const [, getOverAllScore] = useState(0);
   const setOverAllScore = (score) =>{
       getOverAllScore(score);
       reviewData.overall = Number(score);
   }
 
-  const [EOUScore, getEOUScore] = useState(0);
+  const [, getEOUScore] = useState(0);
   const setEOUScore = (score) =>{
     getEOUScore(score);
     reviewData.ease_of_use = Number(score);
   }
 
-  const [coverageScore, getCoverageScore] = useState(0);
+  const [, getCoverageScore] = useState(0);
   const setCoverageScore = (score) =>{
     getCoverageScore(score);
     reviewData.coverage = Number(score);
   }
 
-  const [priceScore, getPriceScore] = useState(0);
+  const [, getPriceScore] = useState(0);
   const setPriceScore = (score) =>{
     getPriceScore(score);
     reviewData.price = Number(score);
   }
 
-  const [customerServiceScore, getCustomerServiceScore] = useState(0);
+  const [, getCustomerServiceScore] = useState(0);
   const setCustomerServiceScore = (score) =>{
     getCustomerServiceScore(score);
     reviewData.customer_service= Number(score);
@@ -75,7 +75,7 @@ const Form = () => {
   }
 
   // DROP DOWN MENU STATE
-  const [companyName, getCompName] = useState('');
+  const [, getCompName] = useState('');
   const setCompName = (compName) => {
     
     getCompName(compName);
