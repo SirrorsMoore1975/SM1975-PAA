@@ -1,5 +1,5 @@
 import React from "react";
-import "./AvgScores.css"
+import "../styles/AvgScores.css"
 
 /*
 overall": 5.705882352941177,

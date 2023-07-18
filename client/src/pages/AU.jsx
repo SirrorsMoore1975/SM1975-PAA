@@ -6,7 +6,7 @@ import ProviderInfo from "../components/ProviderInfo";
 import AvgScores from "../components/AvgScores";
 import Footer from "../components/Footer";
 import Button from '../components/Button';
-import "./Provider.css";
+import "../styles/Provider.css";
 
 
 const AU = () => {

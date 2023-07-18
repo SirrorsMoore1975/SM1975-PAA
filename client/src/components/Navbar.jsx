@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from './Button';
-import "./Navbar.css"
+import "../styles/Navbar.css"
 
 const Navbar = (props) => {
   const { className, text } = props;

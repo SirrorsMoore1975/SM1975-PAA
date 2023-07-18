@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import "./Radio.css";
+import "../styles/Radio.css";
 
 const inputs = [];
 
