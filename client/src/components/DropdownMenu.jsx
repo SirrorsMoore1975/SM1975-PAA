@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import "../styles/DropdownMenu.css";
+import provider from "../data/provider.json";
 
 const options = [
   {value: "", text:"--- Select a phone provider ---"},
-  {value:"AU", text:"AU", provider_id:3 },
-  {value:"Docomo", text:"Docomo" , provider_id:2},
-  {value:"GTN", text:"GTN", provider_id:9 },
-  {value:"LINEMO", text:"LINEMO",provider_id:6 },
-  {value:"Mobal", text:"Mobal", provider_id:1 },
-  {value:"Rakuten", text:"Rakuten", provider_id:5 },
-  {value:"Softbank", text:"Softbank", provider_id:4 },
-  {value:"UQ", text:"UQ", provider_id:8 },
-  {value:"Ymobile", text:"Ymobile", provider_id:7 },
+  ...provider
 ];
 
 function DropdownMenu ( props ) {
