@@ -10,8 +10,8 @@
         "text":"Docomo"
     },
     {
-        "value":"AU",
         "provider_id":3,
+        "value":"AU",
         "text":"AU"
     },
     {
