@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Navbar from '../components/Navbar';
@@ -10,8 +10,6 @@ import DropdownMenu from '../components/DropdownMenu';
 import Radio from '../components/Radio';
 import "./Form.css";
 
-
-// this object will get sent to the server with data for database
 const reviewData = {
   provider_id: "", 
   reviewer_name: "", 
@@ -28,35 +26,31 @@ const Form = () => {
   const navigate = useNavigate();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // SCORE INPUT STATE // Overall, Ease of Use, Coverage
-  const [overAllScore, getOverAllScore] = useState(0);
+  const [, getOverAllScore] = useState(0);
   const setOverAllScore = (score) =>{
       getOverAllScore(score);
-      
       reviewData.overall = Number(score);
-      
   }
 
-  const [EOUScore, getEOUScore] = useState(0);
+  const [, getEOUScore] = useState(0);
   const setEOUScore = (score) =>{
     getEOUScore(score);
     reviewData.ease_of_use = Number(score);
   }
 
-  const [coverageScore, getCoverageScore] = useState(0);
+  const [, getCoverageScore] = useState(0);
   const setCoverageScore = (score) =>{
     getCoverageScore(score);
     reviewData.coverage = Number(score);
   }
 
-  const [priceScore, getPriceScore] = useState(0);
+  const [, getPriceScore] = useState(0);
   const setPriceScore = (score) =>{
     getPriceScore(score);
     reviewData.price = Number(score);
   }
 
-  const [customerServiceScore, getCustomerServiceScore] = useState(0);
+  const [, getCustomerServiceScore] = useState(0);
   const setCustomerServiceScore = (score) =>{
     getCustomerServiceScore(score);
     reviewData.customer_service= Number(score);
@@ -81,7 +75,7 @@ const Form = () => {
   }
 
   // DROP DOWN MENU STATE
-  const [companyName, getCompName] = useState('');
+  const [, getCompName] = useState('');
   const setCompName = (compName) => {
     
     getCompName(compName);
@@ -110,10 +104,6 @@ const Form = () => {
     setServerResponse(response.data);
   };
 
-  // USE EFFECT
-  
-
-    
   return (
     <div>  
       {
