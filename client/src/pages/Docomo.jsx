@@ -6,7 +6,7 @@ import ProviderInfo from "../components/ProviderInfo";
 import AvgScores from "../components/AvgScores";
 import Button from '../components/Button';
 import Footer from "../components/Footer";
-import "./Provider.css";
+import "../styles/Provider.css";
 
 
 const Docomo = () => {
