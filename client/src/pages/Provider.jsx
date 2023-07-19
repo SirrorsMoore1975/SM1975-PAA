@@ -4,11 +4,12 @@ import axios from "axios";
 import ReviewCard from "../components/ReviewCard";
 import ProviderInfo from "../components/ProviderInfo";
 import AvgScores from "../components/AvgScores";
-import Button from '../components/Button';
 import Footer from "../components/Footer";
+import Button from '../components/Button';
 import "../styles/Provider.css";
 
-const Rakuten = () => {
+
+const Provider = ({provider_id}) => {
   const navigate = useNavigate();
 
   const [provider, setProvider] = useState([{},[]]);
@@ -18,10 +19,11 @@ const Rakuten = () => {
   },)
 
   async function getProvider() {
-
-    const fetchedProvider = await axios.get('/api/provider/5'); 
+    // for a general provider page. replace the path with axios.get(`/api/provider/${provider_id}`)
+    const fetchedProvider = await axios.get(`/api/provider/${provider_id}`); 
     setProvider(fetchedProvider.data)
   }
+
   return (
     <div>
       <ProviderInfo provider={provider[0]} />
@@ -38,4 +40,4 @@ const Rakuten = () => {
   );
 }
 
-export default Rakuten;
+export default Provider;

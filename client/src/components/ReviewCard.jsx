@@ -6,9 +6,9 @@ const ReviewCard = (props) => {
   return (
     <div className='reviews-div'>
       {
-        reviews.map((review) => {
+        reviews.map((review,index) => {
           return (
-            <div className='review-card'>
+            <div className='review-card' key={index}>
               <h3>{review.reviewer_name}</h3>
               <div className="scores">
                 <span className='overall'>Overall: {review.overall}</span>
