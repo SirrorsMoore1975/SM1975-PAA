@@ -38,5 +38,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"http://localhost:4000"
+  "proxy": "http://localhost:4000",
+  "devDependencies": {
+    "babel-preset-react-app": "^10.0.1"
+  }
 }
