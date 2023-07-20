@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Form from "./pages/Form";
+import ThankYou from "./pages/ThankYou";
 
 import Provider from "./pages/Provider"
 
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
     // element: <Ymobile />
     element: <Provider provider_id={7} />
   },
+  {
+    path: "/thankyou",
+    element: <ThankYou ></ThankYou>
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

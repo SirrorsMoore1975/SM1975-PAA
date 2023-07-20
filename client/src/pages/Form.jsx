@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import Input from '../components/Input';
 import Button from '../components/Button';
-import Header from '../components/Header';
+
 import Footer from '../components/Footer';
 import DropdownMenu from '../components/DropdownMenu';
 import Radio from '../components/Radio';
+import ThankYou from "../pages/ThankYou";
 import "../styles/Form.css";
 
 const reviewData = {
@@ -23,8 +24,6 @@ const reviewData = {
 };
 
 const Form = () => {
-  const navigate = useNavigate();
-
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [, getOverAllScore] = useState(0);
   const setOverAllScore = (score) =>{
@@ -102,6 +101,7 @@ const Form = () => {
     const response = await axios.post('/api/review', reviewData)
       .catch((error) => console.log(error));  
     setServerResponse(response.data);
+    
   };
 
   return (
@@ -109,10 +109,8 @@ const Form = () => {
       {
         isSubmitted
         ? (
-          <div className="thanks">    
-            <Header className="header" text="Thank you for your feedback!" secondary_text={serverResponse}/>
-            <Button className="button submit" text="Home" onClick={() => navigate('/')} />
-            <Footer className="footer" text="© 2023 Phone Carrier Review App"/>
+          <div>
+          <ThankYou text={serverResponse} />
           </div>
         )
 
