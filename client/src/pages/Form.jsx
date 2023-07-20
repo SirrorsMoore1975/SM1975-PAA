@@ -24,7 +24,6 @@ const reviewData = {
 };
 
 const Form = () => {
-
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [, getOverAllScore] = useState(0);
   const setOverAllScore = (score) =>{
@@ -102,6 +101,7 @@ const Form = () => {
     const response = await axios.post('/api/review', reviewData)
       .catch((error) => console.log(error));  
     setServerResponse(response.data);
+    
   };
 
   return (
