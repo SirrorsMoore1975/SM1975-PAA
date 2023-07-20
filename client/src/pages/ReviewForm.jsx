@@ -8,7 +8,7 @@ import Button from '../components/Button';
 import Footer from '../components/Footer';
 import DropdownMenu from '../components/DropdownMenu';
 import Radio from '../components/Radio';
-import ThankYou from "../pages/ThankYou";
+
 import "../styles/Form.css";
 
 const reviewData = {
@@ -92,30 +92,22 @@ const ReviewForm = () => {
   }
 
   // SERVER RESPONSE STATE
-  const [serverResponse, setServerResponse] = useState('Pending');
+  // const [serverResponse, setServerResponse] = useState('Pending');
 
   // HANDLER FUNCTION
   const handleSubmission = async (event) => {
     event.preventDefault();
     
-    const response = await axios.post('/api/review', reviewData)
+    // const response = 
+    await axios.post('/api/review', reviewData)
       .catch((error) => console.log(error));  
-    setServerResponse(response.data);
+    // setServerResponse(response.data);
     
   };
 
   return (
-    <div>  
-      {
-        isSubmitted
-        ? (
-          <div>
-          <ThankYou text={serverResponse} />
-          </div>
-        )
-
-        : (
-          <div className="main">
+    <>  
+        <div className="main">
             <Navbar className="navbar" text="We appreciate your reviews"/>
             <div className="wrapper">
               <div className="scores-div">
@@ -186,9 +178,9 @@ const ReviewForm = () => {
             />
             <Footer className="footer" text="© 2023 Phone Carrier Review App"/>
         </div>
-        )
-      }
-    </div>
+        
+      
+    </>
   );
 }
 

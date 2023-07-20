@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Form from "./pages/Form";
 import ThankYou from "./pages/ThankYou";
-
+import ReviewForm from "./pages/ReviewForm";
 import Provider from "./pages/Provider"
 
 const router = createBrowserRouter([
@@ -64,7 +64,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/thankyou",
-    element: <ThankYou ></ThankYou>
+    element: <ThankYou text={"undefined"} />
+  },
+  {
+    path: "/reviewform",
+    element:<ReviewForm />
   }
 ]);
 
