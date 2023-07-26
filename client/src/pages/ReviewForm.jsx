@@ -9,6 +9,8 @@ import Footer from '../components/Footer';
 import DropdownMenu from '../components/DropdownMenu';
 import Radio from '../components/Radio';
 
+import provider from '../data/provider.json'
+
 import "../styles/Form.css";
 
 const reviewData = {
@@ -23,7 +25,7 @@ const reviewData = {
   customer_review: ""
 };
 
-const ReviewForm = () => {
+const ReviewForm = ({provider_id}) => {
   
   const [, getOverAllScore] = useState(0);
   const setOverAllScore = (score) =>{
@@ -74,7 +76,7 @@ const ReviewForm = () => {
   }
 
   // DROP DOWN MENU STATE
-  const [, getCompName] = useState('');
+  const [compName, getCompName] = useState(provider[provider_id].value ?? '');
   const setCompName = (compName) => {
     
     getCompName(compName);
@@ -159,7 +161,7 @@ const ReviewForm = () => {
                 {<DropdownMenu
                   className="menu"  
                   setProviderId={setCompName}/>}
-                
+                  prefill={ compName }
               </div>
             </div>
                 <textarea 

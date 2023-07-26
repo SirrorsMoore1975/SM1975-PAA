@@ -8,10 +8,10 @@ const options = [
 ];
 
 function DropdownMenu ( props ) {
-  const { className, htmlFor, labelName, selectName, selectid, required, disabled, size, setProviderId } = props;
+  const { className, htmlFor, labelName, selectName, selectid, required, disabled, size, setProviderId, prefill } = props;
 
 
-  const [selected, setSelected ] = useState(options[0].value);
+  const [selected, setSelected ] = useState(prefill ?? options[0].value);
 
   const handleChange = (event) => {
   
@@ -59,7 +59,8 @@ DropdownMenu.defaultProps ={
     selectid:"", 
     required:"",
     disabled:"",
-    size:1
+    size:1,
+    prefill:0
 }
 
 export default DropdownMenu;
