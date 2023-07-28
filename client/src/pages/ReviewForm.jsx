@@ -25,7 +25,7 @@ const reviewData = {
   customer_review: ""
 };
 
-const ReviewForm = ({provider_id}) => {
+const ReviewForm = () => {
   
   const [, getOverAllScore] = useState(0);
   const setOverAllScore = (score) =>{
@@ -76,7 +76,7 @@ const ReviewForm = ({provider_id}) => {
   }
 
   // DROP DOWN MENU STATE
-  const [compName, getCompName] = useState(provider[provider_id].value ?? '');
+  const [, getCompName] = useState('');
   const setCompName = (compName) => {
     
     getCompName(compName);
@@ -161,7 +161,7 @@ const ReviewForm = ({provider_id}) => {
                 {<DropdownMenu
                   className="menu"  
                   setProviderId={setCompName}/>}
-                  prefill={ compName }
+                  
               </div>
             </div>
                 <textarea 

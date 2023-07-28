@@ -10,6 +10,7 @@ import DropdownMenu from '../components/DropdownMenu';
 import Radio from '../components/Radio';
 import ThankYou from "../pages/ThankYou";
 import "../styles/Form.css";
+import ReviewCard from "../pages/ReviewForm"
 
 const reviewData = {
   provider_id: "", 
@@ -115,77 +116,10 @@ const Form = () => {
         )
 
         : (
-          <div className="main">
-            <Navbar className="navbar" text="We appreciate your reviews"/>
-            <div className="wrapper">
-              <div className="scores-div">
-                <Radio 
-                  className="radio"
-                  radioName="Overall"
-                  scoreSetter={setOverAllScore} 
-                />
-                <br />
-                <Radio 
-                  className="radio"
-                  radioName="Ease Of Use"
-                  scoreSetter={setEOUScore}
-                />
-                
-                <Radio 
-                  className="radio"
-                  radioName="Coverage"
-                  scoreSetter={setCoverageScore}
-                />
-                
-                <Radio
-                  className="radio" 
-                  radioName="Price"
-                  scoreSetter={setPriceScore}
-                />
-                
-                <Radio
-                  className="radio" 
-                  radioName="Customer Service"
-                  scoreSetter={setCustomerServiceScore}
-                />
-              </div>
-              <div className="inputs">
-                <Input
-                  className="input" 
-                  placeholder="Nickname"
-                  value ={ nickname } 
-                  onChange={ handleNicknameInput }
-                />
-
-                <Input
-                  className="input"  
-                  placeholder="Email" 
-                  value={ email }
-                  onChange={ handleEmailInput }
-                />
-
-                {<DropdownMenu
-                  className="menu"  
-                  setProviderId={setCompName}/>}
-                
-              </div>
-            </div>
-                <textarea 
-                  name="" 
-                  id="" 
-                  cols="60" 
-                  rows="10" 
-                  placeholder="Type your review here!"
-                  value={ comment }
-                  onChange={ handleCommentInput }
-                />
-            <Button
-            className="button submit"
-              text="Submit"
-              onClick = { handleSubmission }
-            />
-            <Footer className="footer" text="© 2023 Phone Carrier Review App"/>
-        </div>
+          <div>
+          <ReviewForm />
+          </div>
+          
         )
       }
     </div>
