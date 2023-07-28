@@ -14,10 +14,6 @@ const router = createBrowserRouter([
     element: <Homepage />
   },
   {
-    path: "/Form",
-    element: <Form />
-  },
-  {
     path: "/AU",
     // element: <AU />
     element: <Provider provider_id={3}/>
