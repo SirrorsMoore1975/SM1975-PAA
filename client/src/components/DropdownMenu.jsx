@@ -59,7 +59,8 @@ DropdownMenu.defaultProps ={
     selectid:"", 
     required:"",
     disabled:"",
-    size:1
+    size:1,
+    prefill:0
 }
 
 export default DropdownMenu;

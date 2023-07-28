@@ -8,7 +8,9 @@ import Button from '../components/Button';
 import Footer from '../components/Footer';
 import DropdownMenu from '../components/DropdownMenu';
 import Radio from '../components/Radio';
-import ThankYou from "../pages/ThankYou";
+
+import ThankYou from '../pages/ThankYou';
+
 import "../styles/Form.css";
 
 const reviewData = {
@@ -23,8 +25,8 @@ const reviewData = {
   customer_review: ""
 };
 
-const Form = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const ReviewForm = () => {
+  
   const [, getOverAllScore] = useState(0);
   const setOverAllScore = (score) =>{
       getOverAllScore(score);
@@ -91,20 +93,26 @@ const Form = () => {
     reviewData.customer_review = value;
   }
 
+  
   // SERVER RESPONSE STATE
   const [serverResponse, setServerResponse] = useState('Pending');
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  
   // HANDLER FUNCTION
   const handleSubmission = async (event) => {
     event.preventDefault();
     setIsSubmitted(!isSubmitted);
+    // const response = 
     const response = await axios.post('/api/review', reviewData)
       .catch((error) => console.log(error));  
     setServerResponse(response.data);
     
   };
 
+  
+
   return (
+    <>  
     <div>  
       {
         isSubmitted
@@ -115,7 +123,7 @@ const Form = () => {
         )
 
         : (
-          <div className="main">
+        <div className="main">
             <Navbar className="navbar" text="We appreciate your reviews"/>
             <div className="wrapper">
               <div className="scores-div">
@@ -167,7 +175,7 @@ const Form = () => {
                 {<DropdownMenu
                   className="menu"  
                   setProviderId={setCompName}/>}
-                
+                  
               </div>
             </div>
                 <textarea 
@@ -186,10 +194,12 @@ const Form = () => {
             />
             <Footer className="footer" text="© 2023 Phone Carrier Review App"/>
         </div>
+        
         )
       }
     </div>
+    </>
   );
 }
 
-export default Form;
+export default ReviewForm;
