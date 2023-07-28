@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import DropdownMenu from '../components/DropdownMenu';
 import Radio from '../components/Radio';
 
-import provider from '../data/provider.json'
+import ThankYou from '../pages/ThankYou';
 
 import "../styles/Form.css";
 
@@ -93,22 +93,36 @@ const ReviewForm = () => {
     reviewData.customer_review = value;
   }
 
+  
   // SERVER RESPONSE STATE
-  // const [serverResponse, setServerResponse] = useState('Pending');
-
+  const [serverResponse, setServerResponse] = useState('Pending');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  
   // HANDLER FUNCTION
   const handleSubmission = async (event) => {
     event.preventDefault();
-    
+    setIsSubmitted(!isSubmitted);
     // const response = 
-    await axios.post('/api/review', reviewData)
+    const response = await axios.post('/api/review', reviewData)
       .catch((error) => console.log(error));  
-    // setServerResponse(response.data);
+    setServerResponse(response.data);
     
   };
 
+  
+
   return (
     <>  
+    <div>  
+      {
+        isSubmitted
+        ? (
+          <div>
+          <ThankYou text={serverResponse} />
+          </div>
+        )
+
+        : (
         <div className="main">
             <Navbar className="navbar" text="We appreciate your reviews"/>
             <div className="wrapper">
@@ -181,7 +195,9 @@ const ReviewForm = () => {
             <Footer className="footer" text="© 2023 Phone Carrier Review App"/>
         </div>
         
-      
+        )
+      }
+    </div>
     </>
   );
 }

@@ -31,7 +31,7 @@ const Provider = ({provider_id}) => {
         <div>
           <AvgScores scores={provider[0]} />
           <span>Have you used this company?</span>
-          <Button className="button review" text="Write a Review" onClick={() => navigate('/Form')} />
+          <Button className="button review" text="Write a Review" onClick={() => navigate('/reviewform')} />
         </div>
         <ReviewCard reviews={provider[1]}></ReviewCard>
       </div>
