@@ -10,8 +10,8 @@ const ProviderInfo = (props) => {
 
   return (
     <>
+    
     <div className='provider-hero-div'>
-    <ProviderNavbar></ProviderNavbar>
       <div className='provider-info'>
       
         <h2>{provider.name}</h2>
@@ -26,6 +26,7 @@ const ProviderInfo = (props) => {
         </div>
       </div>
     </div>
+    <ProviderNavbar></ProviderNavbar>
     </>
   )
 }
