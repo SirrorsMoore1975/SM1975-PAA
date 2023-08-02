@@ -19,13 +19,17 @@ const ProviderNavbar = () => {
   
     const handleGoRight = () => {
         if(goRight===9){
-            
+
         }
+    }
+
+    const handleDropdownMenu = () => {
+
     }
     return (
         <>
             <div className="provider-navbar">
-                <div className="provider-pannel"><Button className="button" text="<" onClick={handleGoLeft} />{"Select: "}<Button className="button" text=">" onClick={handleGoRight} />
+                <div className="provider-pannel"><Button className="button" text="<" onClick={handleGoLeft} />{"Select: "}<Button text={currentView} /><Button className="button" text=">" onClick={handleGoRight} />
                 </div>
             </div>
         </>
