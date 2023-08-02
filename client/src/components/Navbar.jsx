@@ -4,14 +4,18 @@ import Button from './Button';
 import "../styles/Navbar.css"
 
 const Navbar = (props) => {
-  const { className, text } = props;
+  const { text } = props;
   const navigate = useNavigate();
   
   return (
-    <div className={className}>
+    // <div className={className}>
+    <>
+     
+    <div className="navbar">
       <Button className="button" text="Home" onClick={() => navigate('/')}/>
       <h1>{ text }</h1>      
     </div>
+    </>
   )
 };
 

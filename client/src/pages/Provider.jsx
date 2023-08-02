@@ -26,6 +26,7 @@ const Provider = ({provider_id}) => {
 
   return (
     <div>
+      
       <ProviderInfo provider={provider[0]} />
       <div className="main-content">
         <div>

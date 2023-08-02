@@ -21,6 +21,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 50%; 
+  overflow: auto;
 }
 
 .hero-right {
