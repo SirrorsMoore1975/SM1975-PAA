@@ -13,6 +13,22 @@ const ProviderNavbar = ({provider_id}) => {
     // useEffect(() => {
     //     fetchedCurrentProvider();
     // },[]);
+    const [prefill, setPrefill] = useState(provider_id ?? 0);
+    const [providers, setProviders] = useState([]);
+    useEffect(()=>{
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+        axios.get("/api/providers/", {headers: headers})
+        .then((response) => {
+            setProviders(response.data);
+            console.log("😎 ProviderNarbar.jsx:",response.data)
+        })
+        .catch((error) => {
+            console.log("🤯 ProviderNavbar.jsx error:",error)
+        })
+    },[]);
     
     const options = [
         {provider_id: 0, value: "", text:"--- Select a phone provider ---"},
