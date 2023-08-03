@@ -26,7 +26,7 @@ const ProviderInfo = (props) => {
         </div>
       </div>
     </div>
-    <ProviderNavbar></ProviderNavbar>
+    <ProviderNavbar provider_id={provider.id}></ProviderNavbar>
     </>
   )
 }
