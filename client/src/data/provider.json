@@ -21,27 +21,27 @@
     },
     {
         "provider_id":5,
-        "value":"Rakuten",
+        "value":"Rakuten Mobile",
         "text":"Rakuten"
     },
     {
         "provider_id":6,
-        "value":"LINEMO",
+        "value":"Linemo",
         "text":"LINEMO"
     },
     {
         "provider_id":7,
-        "value":"Ymobile",
+        "value":"Y!mobile",
         "text":"Ymobile"
     },
     {
         "provider_id":8,
-        "value":"UQ",
+        "value":"UQ Mobile",
         "text":"UQ"
     },
     {
         "provider_id":9,
-        "value":"GTN",
+        "value":"GTN Mobile",
         "text":"GTN"
     }
 ]
