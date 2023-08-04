@@ -10,7 +10,7 @@ const options = [
     {
         "provider_id": 0,
         "value": "",
-        "text": ""
+        "text": "undefined"
     },
     ...providerJSON
 ];
@@ -20,8 +20,7 @@ const ProviderNavbar = ({provider_id}) => {
     //     fetchedCurrentProvider();
     // },[]);
     
-    
-    const [prefill, setPrefill] = useState(Number(provider_id) ?? 0);
+    const [prefill, setPrefill ] = useState(0);
     const [providers, setProviders] = useState([]);
     useEffect(()=>{
         const headers = {
@@ -42,7 +41,15 @@ const ProviderNavbar = ({provider_id}) => {
         console.log(options);
     },[]);
     
-    
+    useEffect(()=>{
+        provider_id = parseInt(provider_id, 10);
+        if(isNaN(provider_id)){
+            setPrefill(0);
+        } else {
+            setPrefill(provider_id);
+        }
+        console.log("🥰",prefill);
+    }, [prefill])
 
 
     const navigate = useNavigate();
@@ -60,14 +67,16 @@ const ProviderNavbar = ({provider_id}) => {
   
     const handleGoLeft = () => {
         if(goLeft===0){
-            setGoLeft(8)
+            setGoLeft(8);
         }
+        navigate(`/${options[goLeft].value}`);
     }
   
     const handleGoRight = () => {
         if(goRight===9){
             setGoRight(1)
         }
+        navigate(`/${options[goRight].value}`);
     }
 
     const handleDropdownMenu = () => {
@@ -76,7 +85,7 @@ const ProviderNavbar = ({provider_id}) => {
     return (
         <>
             <div className="provider-navbar">
-                <div className="provider-pannel"><Button className="button" text="<" onClick={handleGoLeft} />{"Select: "}<Button text={options[0].text} onClick={handleDropdownMenu}/><Button className="button" text=">" onClick={handleGoRight} />
+                <div className="provider-pannel"><Button className="button" text="<" onClick={handleGoLeft} />{"Select: "}<Button className="button" text={options[prefill].text} onClick={handleDropdownMenu}/><Button className="button" text=">" onClick={handleGoRight} />
                 </div>
             </div>
         </>
