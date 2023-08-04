@@ -39,7 +39,7 @@ const ProviderNavbar = ({provider_id}) => {
             
         }
         fetchData();
-        console.log("😂",prefill);
+        console.log(options);
     },[]);
     
     
@@ -76,7 +76,7 @@ const ProviderNavbar = ({provider_id}) => {
     return (
         <>
             <div className="provider-navbar">
-                <div className="provider-pannel"><Button className="button" text="<" onClick={handleGoLeft} />{"Select: "}<Button text={options[prefill].text} onClick={handleDropdownMenu}/><Button className="button" text=">" onClick={handleGoRight} />
+                <div className="provider-pannel"><Button className="button" text="<" onClick={handleGoLeft} />{"Select: "}<Button text={options[0].text} onClick={handleDropdownMenu}/><Button className="button" text=">" onClick={handleGoRight} />
                 </div>
             </div>
         </>
