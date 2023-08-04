@@ -6,34 +6,43 @@ import axios from 'axios';
 import "../styles/ProviderNavbar.css";
 import providerJSON from "../data/provider.json";
 
-
-
+const options = [
+    {
+        "provider_id": 0,
+        "value": "",
+        "text": ""
+    },
+    ...providerJSON
+];
 
 const ProviderNavbar = ({provider_id}) => {
     // useEffect(() => {
     //     fetchedCurrentProvider();
     // },[]);
-    const [prefill, setPrefill] = useState(provider_id ?? 0);
+    
+    
+    const [prefill, setPrefill] = useState(Number(provider_id) ?? 0);
     const [providers, setProviders] = useState([]);
     useEffect(()=>{
         const headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-        axios.get("/api/providers/", {headers: headers})
-        .then((response) => {
-            setProviders(response.data);
-            console.log("😎 ProviderNarbar.jsx:",response.data)
-        })
-        .catch((error) => {
-            console.log("🤯 ProviderNavbar.jsx error:",error)
-        })
+        const fetchData = async () => {
+            try{
+               const response = await axios.get("/api/providers", {headers: headers})
+               setProviders(...providers,response.data);
+               console.log("ProviderNavbar.jsx:", providers);
+            } catch(err) {
+                console.log(err);
+            }
+            
+        }
+        fetchData();
+        console.log("😂",prefill);
     },[]);
     
-    const options = [
-        {provider_id: 0, value: "", text:"--- Select a phone provider ---"},
-        ...providerJSON
-      ];
+    
 
 
     const navigate = useNavigate();
@@ -67,7 +76,7 @@ const ProviderNavbar = ({provider_id}) => {
     return (
         <>
             <div className="provider-navbar">
-                <div className="provider-pannel"><Button className="button" text="<" onClick={handleGoLeft} />{"Select: "}<Button text={currentView} /><Button className="button" text=">" onClick={handleGoRight} />
+                <div className="provider-pannel"><Button className="button" text="<" onClick={handleGoLeft} />{"Select: "}<Button text={options[prefill].text} onClick={handleDropdownMenu}/><Button className="button" text=">" onClick={handleGoRight} />
                 </div>
             </div>
         </>
