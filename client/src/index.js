@@ -6,7 +6,8 @@ import Homepage from "./pages/Homepage";
 
 import ThankYou from "./pages/ThankYou";
 import ReviewForm from "./pages/ReviewForm";
-import Provider from "./pages/Provider"
+import Provider from "./pages/Provider";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
   {
     path: "/reviewform",
     element:<ReviewForm />
+  },
+  {
+    paht: "/errorpage",
+    element:<ErrorPage />
   }
 ]);
 

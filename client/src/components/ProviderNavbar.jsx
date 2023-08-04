@@ -9,7 +9,7 @@ import providerJSON from "../data/provider.json";
 const options = [
     {
         "provider_id": 0,
-        "value": "",
+        "value": "errorpage",
         "text": "undefined"
     },
     ...providerJSON
@@ -64,23 +64,26 @@ const ProviderNavbar = ({provider_id}) => {
     const [goLeft, setGoLeft] = useState(provider_id - 1)
     const [goRight, setGoRight] = useState(provider_id + 1);
 
-  
-    const handleGoLeft = () => {
+    const handleGoLeft = (e) => {
+        e.preventDefault();
         if(goLeft===0){
             setGoLeft(8);
         }
+        console.log("😂", goLeft);
         navigate(`/${options[goLeft].value}`);
     }
   
-    const handleGoRight = () => {
+    const handleGoRight = (e) => {
+        e.preventDefault();
         if(goRight===9){
-            setGoRight(1)
+            setGoRight(1);
         }
+        console.log("🤪",goRight);
         navigate(`/${options[goRight].value}`);
     }
 
-    const handleDropdownMenu = () => {
-
+    const handleDropdownMenu = (e) => {
+        e.preventDefault();
     }
     return (
         <>
