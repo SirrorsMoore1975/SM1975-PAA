@@ -41,7 +41,7 @@ const ProviderNavbar = ({provider_id}) => {
             } else {
                 setPrefill(parseInt(provider_id));
             }
-            console.log("🈲provider_id:",provider_id);
+            console.log("🈲provider_id:",provider_id, typeof provider_id);
             console.log("😇prefill:",prefill);
 
         } catch (error){
@@ -59,8 +59,8 @@ const ProviderNavbar = ({provider_id}) => {
         setGoLeft(goLeft - 1)
         if(goLeft===0){
             setGoLeft(8);
-            setPrefill(goLeft);
-            navigate(`/${options[goLeft].value}`)
+            setPrefill(8);
+            navigate(`/${options[8].value}`)
         } else {
             setPrefill(goLeft);
             navigate(`/${options[goLeft].value}`);
@@ -73,8 +73,8 @@ const ProviderNavbar = ({provider_id}) => {
         setGoRight(goRight + 1);
         if(goRight===9){
             setGoRight(0);
-            setPrefill(goRight);
-            navigate(`/${options[goRight].value}`)
+            setPrefill(0);
+            navigate(`/${options[0].value}`)
         } else {
             setPrefill(goRight);
             navigate(`/${options[goRight].value}`)
