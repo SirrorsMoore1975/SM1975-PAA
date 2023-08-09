@@ -24,7 +24,7 @@ const ProviderNavbar = ({provider_id}) => {
     useEffect(()=>{
         console.log(provider_id);
         console.log(prefill);
-    },[prefill, provider_id])
+    },[prefill, provider_id]);
     // const [providers, setProviders] = useState([]);
     // useEffect(()=>{
     //     const headers = {
