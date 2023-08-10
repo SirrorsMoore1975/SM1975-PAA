@@ -6,7 +6,7 @@ import Button from './Button';
 import "../styles/ProviderNavbar.css";
 import providerJSON from "../data/provider.json";
 
-const options= [
+const options = [
     {
         provider_id:0,
         text:"not available",
@@ -17,7 +17,7 @@ const options= [
 const ProviderNavbar = ({provider_id}) => {
     const navigate = useNavigate();
     const [currentView, setCurrentView] = useState(parseInt(provider_id) ?? 0);
-    const [currentText, setCurrentText] = useState(options[provider_id]["text"]);
+    const [currentText, setCurrentText] = useState(options[currentView]["text"]);
     const [goLeft, setGoLeft] = useState(currentView -1);
     const [goRight, setGoRight] = useState(currentView + 1);
     // const fetchData = () => {
