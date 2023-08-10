@@ -16,7 +16,7 @@ const options = [
 ];
 const ProviderNavbar = ({provider_id}) => {
     const navigate = useNavigate();
-    const [currentView, setCurrentView] = useState(parseInt(provider_id) ?? 0);
+    const [currentView, setCurrentView] = useState(parseInt(provider_id) || 0);
     const [currentText, setCurrentText] = useState(options[currentView]["text"]);
     const [goLeft, setGoLeft] = useState(currentView -1);
     const [goRight, setGoRight] = useState(currentView + 1);
