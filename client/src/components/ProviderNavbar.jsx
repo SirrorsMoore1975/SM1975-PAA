@@ -10,29 +10,31 @@ import providerJSON from "../data/provider.json";
 
 const ProviderNavbar = ({provider_id}) => {
 
-    const [options, setOptions] = useState([...providerJSON])
-    const fetchProvider = () => {
-        try {
-            if(options===[]){
-                setOptions([{    
-                    "provider_id": 0,
-                    "value": "errorpage",
-                    "text": "undefined"
-                }]);
-            }
-        } catch(error) {
-            console.error("Cannot fetch provider: ", error);
-        } finally {
-            console.log("fetch provider data is: ",options);
-        }
+    const [options, setOptions] = useState([{provider_id:0,text:"nothing",value:"Mobal"}, ...providerJSON]);
+    const [currentView, setCurrentView] = useState(parseInt(provider_id))
+    
+    // const fetchProvider = () => {
+    //     try {
+    //         if(options===[]){
+    //             setOptions([{    
+    //                 "provider_id": 0,
+    //                 "value": "errorpage",
+    //                 "text": "undefined"
+    //             }]);
+    //         }
+    //     } catch(error) {
+    //         console.error("Cannot fetch provider: ", error);
+    //     } finally {
+    //         console.log("fetch provider data is: ",options);
+    //     }
         
-    }
-    useEffect(() => {
-        fetchProvider();
-        console.log("👹",options);
-    }, []);
+    // }
+    // useEffect(() => {
+    //     fetchProvider();
+    //     console.log("👹",options);
+    // }, []);
 
-    const [prefill, setPrefill ] = useState(provider_id ?? 1);
+    const [prefill, setPrefill ] = useState(provider_id ?? 1) ;
     useEffect(()=>{
         
         try{
@@ -85,10 +87,16 @@ const ProviderNavbar = ({provider_id}) => {
     const handleDropdownMenu = (e) => {
         e.preventDefault();
     }
+    // const handleCurrentViewChange = () => {
+
+    // }
+    // useEffect(()=> {
+    //     changeRightValue();
+    // },[goLeft])
     return (
         <>
             <div className="provider-navbar">
-                <div className="provider-pannel"><Button className="button" text="<" onClick={handleGoLeft} />{"Select: "}<Button className="button" text={options[2].text} onClick={handleDropdownMenu}/><Button className="button" text=">" onClick={handleGoRight} />
+                <div className="provider-pannel"><Button className="button" text="<" onClick={handleGoLeft} />{"Select: "}<Button className="button" text={options[0].text} onClick={handleDropdownMenu}/><Button className="button" text=">" onClick={handleGoRight} />
                 </div>
             </div>
         </>
