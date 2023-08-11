@@ -17,51 +17,31 @@ const options = [
 ];
 const ProviderNavbar = ({provider_id}) => {
     const navigate = useNavigate();
-    const [currentView, setCurrentView] = useState(parseInt(provider_id) || 0);
-    const [currentText, setCurrentText] = useState(options[currentView]["text"]);
-    const [goLeft, setGoLeft] = useState(currentView -1);
-    const [goRight, setGoRight] = useState(currentView + 1);
-    // const fetchData = () => {
-    //     if(provider_id){
-    //         setCurrentText(options[currentView].text);
-    //     } else {
-    //         setCurrentText(options[0].text);
-    //     }
-    // }
-    useEffect(()=>{
-        console.log("🤣",provider_id);
-        // fetchData();
-    },[])
+    // const [currentView, setCurrentView] = useState(parseInt(provider_id) || 1);
+    const [currentText, setCurrentText] = useState(options[parseInt(provider_id)].text);
+    const [goLeft, setGoLeft] = useState(parseInt(provider_id) - 1 || 1);
+    const [goRight, setGoRight] = useState(parseInt(provider_id) + 1 || 1);
+   
+    // useEffect(()=>{
+    //     console.log("🤣",provider_id);
+    //     // fetchData();
+    // },[])
     
     const handleGoLeft = (e) => {
         e.preventDefault();
-        
         if(goLeft===0){
             setGoLeft(9);
-            setCurrentView(9);
-            navigate(`${options[9].path}`)
-        } else {
-            setGoLeft(goLeft);
-            setCurrentView(goLeft);
-            navigate(`${options[goLeft].path}`);
-        }
+        } 
+        navigate(`${options[goLeft].path}`);
         console.log("goLeft- 😂", goLeft);
     }
   
     const handleGoRight = (e) => {
         e.preventDefault();
-        
         if(goRight===9){
-            setGoLeft(8);
-            setCurrentView(9);
-            setGoRight(1);
-            navigate(`${options[1].path}`)
-        } else {
-            setGoLeft(currentView - 1)
-            setCurrentView(goRight);
-            setGoRight(currentView + 1);
-            navigate(`${options[goRight].path}`)
-        }
+            setGoRight(1);    
+        } 
+        navigate(`${options[goRight].path}`);
         console.log("goRight- 🤪", goRight);
     }
 
