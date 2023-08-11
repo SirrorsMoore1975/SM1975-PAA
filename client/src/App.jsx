@@ -1,11 +1,24 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+
+import ThankYou from "./pages/ThankYou";
+import ReviewForm from "./pages/ReviewForm";
+import Provider from "./pages/Provider";
+import ErrorPage from "./pages/ErrorPage";
+
+
+import provider from "./data/provider.json"
 
 const App = () => {
     const route = [
         {
             path:'/',
             element:<Homepage />
+        },
+        {
+            path:'/reviewform',
+            element:<ReviewForm />
         },
         {
             path:'/thankyou',
@@ -16,8 +29,8 @@ const App = () => {
             element: <ErrorPage />
         },
         {
-            path:'/provider/:provider_id',
-            element:<Provider provider_id={provider_id} />
+            path:'/provider/1',
+            element:<Provider />
         }
     ]
     const routes = createBrowserRouter(route)
