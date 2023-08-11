@@ -11,6 +11,12 @@ import ErrorPage from "./pages/ErrorPage";
 import provider from "./data/provider.json"
 
 const App = () => {
+    const providers = provider.map((ele, index)=>{
+        return {
+            path:`${ele.path}`,
+            element:<Provider key={index} provider_id={ele.provider_id} />
+        }
+    })
     const route = [
         {
             path:'/',
@@ -28,11 +34,9 @@ const App = () => {
             path:'/errorpage',
             element: <ErrorPage />
         },
-        {
-            path:'/provider/1',
-            element:<Provider />
-        }
-    ]
+        ...providers
+    ];
+    
     const routes = createBrowserRouter(route)
     return (
         <>
@@ -42,3 +46,4 @@ const App = () => {
         </>
     )
 }
+export default App;

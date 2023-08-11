@@ -10,7 +10,8 @@ const options = [
     {
         provider_id:0,
         text:"not available",
-        value:"not available"
+        value:"not available",
+        path:"/errorpage"
     }, 
     ...providerJSON
 ];
@@ -38,11 +39,11 @@ const ProviderNavbar = ({provider_id}) => {
         if(goLeft===0){
             setGoLeft(9);
             setCurrentView(9);
-            navigate(`/${options[9].value}`)
+            navigate(`${options[9].path}`)
         } else {
             setGoLeft(goLeft);
             setCurrentView(goLeft);
-            navigate(`/${options[goLeft].value}`);
+            navigate(`${options[goLeft].path}`);
         }
         console.log("goLeft- 😂", goLeft);
     }
@@ -54,12 +55,12 @@ const ProviderNavbar = ({provider_id}) => {
             setGoLeft(8);
             setCurrentView(9);
             setGoRight(1);
-            navigate(`/${options[1].value}`)
+            navigate(`${options[1].path}`)
         } else {
             setGoLeft(currentView - 1)
             setCurrentView(goRight);
             setGoRight(currentView + 1);
-            navigate(`/${options[goRight].value}`)
+            navigate(`${options[goRight].path}`)
         }
         console.log("goRight- 🤪", goRight);
     }
