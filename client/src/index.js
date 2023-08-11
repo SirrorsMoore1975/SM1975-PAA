@@ -68,7 +68,7 @@ const router = createBrowserRouter([
     element:<ReviewForm />
   },
   {
-    paht: "/errorpage",
+    path: "/errorpage",
     element:<ErrorPage />
   }
 ]);
