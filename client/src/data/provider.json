@@ -15,32 +15,32 @@
         "provider_id":3,
         "value":"AU",
         "text":"AU",
-        "path":"au"
+        "path":"/au"
     },
     {
         "provider_id":4,
         "value":"Softbank",
         "text":"Softbank",
-        "path":"softbank"
+        "path":"/softbank"
     },
     {
         "provider_id":5,
         "value":"Rakuten Mobile",
         "text":"Rakuten Mobile",
-        "path":"rakutenmobile"
+        "path":"/rakutenmobile"
 
     },
     {
         "provider_id":6,
         "value":"Linemo",
         "text":"LINEMO",
-        "path":"linemo"
+        "path":"/linemo"
     },
     {
         "provider_id":7,
         "value":"Y!mobile",
         "text":"Y!mobile",
-        "path":"ymobile"
+        "path":"/ymobile"
     },
     {
         "provider_id":8,
