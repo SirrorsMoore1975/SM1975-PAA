@@ -22,6 +22,7 @@ const App = () => {
             path:'/',
             element:<Homepage />
         },
+        ...providers,
         {
             path:'/reviewform',
             element:<ReviewForm />
@@ -34,7 +35,6 @@ const App = () => {
             path:'/errorpage',
             element: <ErrorPage />
         },
-        ...providers
     ];
     
     const routes = createBrowserRouter(route)
