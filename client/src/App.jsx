@@ -14,7 +14,7 @@ const App = () => {
     const providers = provider.map((ele, index)=>{
         return {
             path:`${ele.path}`,
-            element:<Provider key={index} provider_id={ele.provider_id} />
+            element:<Provider provider_id={ele.provider_id} key={index} />
         }
     })
     const route = [
@@ -36,14 +36,16 @@ const App = () => {
             element: <ErrorPage />
         },
     ];
-    
-    const routes = createBrowserRouter(route)
+    console.log("😉",route);
+    console.log("😂",providers);
+    const routes = createBrowserRouter(route);
     return (
         <>
         <div className="App">
             <RouterProvider router={routes} />
         </div>
         </>
-    )
+    );
+    
 }
 export default App;

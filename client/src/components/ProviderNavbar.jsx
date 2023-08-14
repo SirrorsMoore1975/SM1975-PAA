@@ -17,20 +17,21 @@ const options = [
     ...providerJSON
 ];
 const ProviderNavbar = ({ provider_id }) => {
+    // const [original , setOriginal ] = useState(0);
     // const [options, setOptions] = useState([]);
-    
-    const [currentView, setCurrentView] = useState(null || 0);
-    const [goLeft , setGoLeft ] = useState(null || 0);
-    const [goRight, setGoRight ] = useState(null || 0);
-    useEffect(()=>{
-        fetchProvider();
-    }, [provider_id])
-    const fetchProvider = () => {
-        // setOptions([...providerJSON]);
-        setCurrentView(parseInt(provider_id));
-        setGoLeft(currentView - 1);
-        setGoRight(currentView + 1);
-    }
+    console.log("😺",provider_id);
+    // const [currentView, setCurrentView] = useState(provider_id || 0);
+    const [goLeft , setGoLeft ] = useState(provider_id - 1 || 1);
+    const [goRight, setGoRight ] = useState(provider_id + 1 || 2);
+    // useEffect(()=>{
+    //     fetchProvider();
+    // }, [provider_id])
+    // const fetchProvider = () => {
+    //     // setOptions([...providerJSON]);
+    //     setCurrentView(parseInt(provider_id));
+    //     setGoLeft(currentView - 1);
+    //     setGoRight(currentView + 1);
+    // }
 
     // const initialID = parseInt(provider_id) ? parseInt(provider_id) : null;
     const navigate = useNavigate();
@@ -70,7 +71,7 @@ const ProviderNavbar = ({ provider_id }) => {
         navigate(options[goRight].path);
         // console.log("goRight- 🤪", goRight);
     };
-
+    
     const handleDropdownMenu = (e) => {
         e.preventDefault();
     };
@@ -93,8 +94,8 @@ const ProviderNavbar = ({ provider_id }) => {
                     className="button" 
                     onClick={handleDropdownMenu} 
     >
-                {options[0].text}  
                     </button>
+                    {options[provider_id].text || options[0].text}  
                     <button 
                         className="button"
                         onClick={handleGoRight}>&gt;</button> 
