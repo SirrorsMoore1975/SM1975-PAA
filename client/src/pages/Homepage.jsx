@@ -35,7 +35,7 @@ const Homepage = () => {
           providers.map((provider,index) => {
             return (
               <Card 
-                key={index}
+                key={index+100}
                 cardName={provider.name}
                 img_url={provider.img_url}
                 averageScore={provider.overall}

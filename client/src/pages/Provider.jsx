@@ -16,18 +16,21 @@ const Provider = ({provider_id}) => {
 
   useEffect(() => {
     getProvider();
+    
   },)
 
   async function getProvider() {
     // for a general provider page. replace the path with axios.get(`/api/provider/${provider_id}`)
     const fetchedProvider = await axios.get(`/api/provider/${provider_id}`); 
-    setProvider(fetchedProvider.data)
+    setProvider(fetchedProvider.data);
+    
   }
-
+  console.log("😒",provider, provider[0], provider[1]);
   return (
     <div>
       
       <ProviderInfo provider={provider[0]} />
+      
       <div className="main-content">
         <div>
           <AvgScores scores={provider[0]} />

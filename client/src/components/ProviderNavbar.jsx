@@ -8,12 +8,12 @@ import providerJSON from "../data/provider.json";
 import "../styles/ProviderNavbar.css";
 
 const options = [
-    // {
-    //     provider_id:0,
-    //     value:"not available",
-    //     text:"not available",
-    //     path:"/errorpage"
-    // }, 
+    {
+        provider_id:0,
+        value:"not available",
+        text:"not available",
+        path:"/errorpage"
+    }, 
     ...providerJSON
 ];
 const ProviderNavbar = ({ provider_id }) => {
@@ -21,8 +21,8 @@ const ProviderNavbar = ({ provider_id }) => {
     // const [options, setOptions] = useState([]);
     console.log("😺",provider_id);
     // const [currentView, setCurrentView] = useState(provider_id || 0);
-    const [goLeft , setGoLeft ] = useState(provider_id - 1 || 1);
-    const [goRight, setGoRight ] = useState(provider_id + 1 || 2);
+    const [goLeft , setGoLeft ] = useState(provider_id || 1);
+    const [goRight, setGoRight ] = useState(provider_id || 2);
     // useEffect(()=>{
     //     fetchProvider();
     // }, [provider_id])
@@ -54,7 +54,8 @@ const ProviderNavbar = ({ provider_id }) => {
     
     const handleGoLeft = (e) => {
         e.preventDefault();
-        setGoLeft(goLeft < 0 ? options.length - 1 : goLeft)
+        const result = goLeft === 0 ? options.length - 1 : goLeft;
+        setGoLeft(result);
         // const goLeft = currentView - 1 < 0 ? options.length - 1 : currentView -1;
         // setCurrentView(goLeft);
         // setInitialId(goLeft)
@@ -64,8 +65,9 @@ const ProviderNavbar = ({ provider_id }) => {
   
     const handleGoRight = (e) => {
         e.preventDefault();
+        const result = (goRight + 1) % options.length;
         // const goRight = (currentView + 1) % options.length;
-        setGoRight((goRight) % options.length);
+        setGoRight(result);
         // setInitialId(goRight)
         // setCurrentView(goRight);
         navigate(options[goRight].path);
@@ -95,7 +97,7 @@ const ProviderNavbar = ({ provider_id }) => {
                     onClick={handleDropdownMenu} 
     >
                     </button>
-                    {options[provider_id].text || options[0].text}  
+                    {options[provider_id].text ?? options[0].text}  
                     <button 
                         className="button"
                         onClick={handleGoRight}>&gt;</button> 

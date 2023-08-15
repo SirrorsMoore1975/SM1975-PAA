@@ -8,6 +8,7 @@ import "../styles/ProviderInfo.css";
 const ProviderInfo = (props) => {
   const { provider } = props
   const navigate = useNavigate();
+  console.log("💔",provider);
 
   return (
     <>
