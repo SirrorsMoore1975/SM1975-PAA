@@ -7,11 +7,11 @@ import ReviewForm from "./pages/ReviewForm";
 import Provider from "./pages/Provider";
 import ErrorPage from "./pages/ErrorPage";
 
-
-import provider from "./data/provider.json"
+import provider from "./data/provider.json";
 
 const App = () => {
     const providers = provider.map((ele, index)=>{
+        
         return {
             path:`${ele.path}`,
             element:<Provider provider_id={ele.provider_id} key={index} />

@@ -9,7 +9,7 @@ import Button from '../components/Button';
 import "../styles/Provider.css";
 
 
-const Provider = ({provider_id}) => {
+const Provider = ({ provider_id }) => {
   const navigate = useNavigate();
 
   const [provider, setProvider] = useState([{},[]]);
@@ -21,8 +21,17 @@ const Provider = ({provider_id}) => {
 
   async function getProvider() {
     // for a general provider page. replace the path with axios.get(`/api/provider/${provider_id}`)
-    const fetchedProvider = await axios.get(`/api/provider/${provider_id}`); 
-    setProvider(fetchedProvider.data);
+    const header = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+    try {
+      const fetchedProvider = await axios.get(`/api/provider/${provider_id}`, header); 
+      setProvider(fetchedProvider.data);
+
+    } catch (err) {
+      console.error("🤢", err);
+    }
     
   }
   console.log("😒",provider, provider[0], provider[1]);

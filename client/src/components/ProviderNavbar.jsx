@@ -16,11 +16,14 @@ const options = [
     }, 
     ...providerJSON
 ];
-const ProviderNavbar = ({ provider_id }) => {
+
+const ProviderNavbar = ( props ) => {
+    const  { provider_id } = props
     // const [original , setOriginal ] = useState(0);
     // const [options, setOptions] = useState([]);
     console.log("😺",provider_id);
-    // const [currentView, setCurrentView] = useState(provider_id || 0);
+    const [currentView, setCurrentView] = useState(provider_id || 0);
+    console.log("🐶",currentView);
     const [goLeft , setGoLeft ] = useState(provider_id || 1);
     const [goRight, setGoRight ] = useState(provider_id || 2);
     // useEffect(()=>{
@@ -97,7 +100,7 @@ const ProviderNavbar = ({ provider_id }) => {
                     onClick={handleDropdownMenu} 
     >
                     </button>
-                    {options[provider_id].text ?? options[0].text}  
+                    {options[currentView].text ?? options[0].text}  
                     <button 
                         className="button"
                         onClick={handleGoRight}>&gt;</button> 
