@@ -8,12 +8,12 @@ import providerJSON from "../data/provider.json";
 import "../styles/ProviderNavbar.css";
 
 const options = [
-    {
-        provider_id:0,
-        value:"not available",
-        text:"not available",
-        path:"/errorpage"
-    }, 
+    // {
+    //     provider_id:0,
+    //     value:"not available",
+    //     text:"not available",
+    //     path:"/errorpage"
+    // }, 
     ...providerJSON
 ];
 
@@ -23,9 +23,9 @@ const ProviderNavbar = ( props ) => {
     const provider_data = useMemo(()=>{
         if(provider_id){
             return {
-                "goLeft":provider_id - 1 === 0 ? options.length : provider_id - 1,
-                "currentView" :provider_id * 1,
-                "goRight": ( provider_id + 1 ) % options.length
+                "goLeft":provider_id - 1 - 1 < 0 ? options.length - 1 : provider_id - 1 - 1,
+                "currentView" :provider_id * 1 - 1,
+                "goRight": ( provider_id -1 + 1 ) % (options.length - 1)
             }
         } else {
             return undefined;
