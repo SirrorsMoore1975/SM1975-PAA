@@ -16,7 +16,7 @@ const Provider = ({ provider_id }) => {
 
   useEffect(() => {
     getProvider();
-    
+    console.log(provider);
   },)
 
   async function getProvider() {
