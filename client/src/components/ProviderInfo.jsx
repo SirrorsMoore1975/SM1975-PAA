@@ -15,7 +15,7 @@ const ProviderInfo = (props) => {
     
     <div className='provider-hero-div'>
       <div className='provider-info'>
-        
+        <h1>{provider.id}</h1>
         <h2>{provider.name}</h2>
         <p>English Support: {provider.english_support === true ? '✅' : '❌'}</p>
         <p>{provider.description}</p>
@@ -28,7 +28,7 @@ const ProviderInfo = (props) => {
         </div>
       </div>
     </div>
-    <ProviderNavbar provider_id={provider.id}></ProviderNavbar>
+    <ProviderNavbar provider_id={provider.id *1}></ProviderNavbar>
     </>
   )
 }
