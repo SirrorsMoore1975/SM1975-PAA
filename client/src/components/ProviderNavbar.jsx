@@ -8,12 +8,12 @@ import providerJSON from "../data/provider.json";
 import "../styles/ProviderNavbar.css";
 
 const options = [
-    // {
-    //     provider_id:0,
-    //     value:"not available",
-    //     text:"not available",
-    //     path:"/errorpage"
-    // }, 
+    {
+        provider_id:0,
+        value:"not available",
+        text:"not available",
+        path:"/errorpage"
+    }, 
     ...providerJSON
 ];
 
@@ -112,8 +112,8 @@ const ProviderNavbar = ( props ) => {
                     className="button" 
                     onClick={handleDropdownMenu} 
     >
-                    </button>
                     {options[provider_data?.currentView].text}  
+                    </button>
                     <button 
                         className="button"
                         onClick={handleGoRight}>&gt;</button> 
