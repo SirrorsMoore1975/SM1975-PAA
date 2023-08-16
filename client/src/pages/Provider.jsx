@@ -38,7 +38,7 @@ const Provider = ({ provider_id }) => {
   return (
     <div>
       
-      <ProviderInfo provider={provider[0]} />
+      <ProviderInfo provider={provider[0]} provider_id={provider_id}/>
       
       <div className="main-content">
         <div>
