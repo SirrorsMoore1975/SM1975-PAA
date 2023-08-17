@@ -1,15 +1,21 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import "../styles/ProviderInfo.css";
+import ProviderNavbar from "../components/ProviderNavbar";
 import Button from "../components/Button";
+import "../styles/ProviderInfo.css";
+// import providerJSON from "../data/provider.json"
 
 const ProviderInfo = (props) => {
-  const { provider } = props
+  const { provider, provider_id } = props
   const navigate = useNavigate();
+  console.log("💔",provider);
 
   return (
+    <>
+    
     <div className='provider-hero-div'>
       <div className='provider-info'>
+        <h1>{`[${provider_id}]`}</h1>
         <h2>{provider.name}</h2>
         <p>English Support: {provider.english_support === true ? '✅' : '❌'}</p>
         <p>{provider.description}</p>
@@ -22,6 +28,8 @@ const ProviderInfo = (props) => {
         </div>
       </div>
     </div>
+    <ProviderNavbar provider_id={provider_id}></ProviderNavbar>
+    </>
   )
 }
 

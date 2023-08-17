@@ -56,7 +56,7 @@ exports.seed = async function(knex) {
     },
     {
       id: 7, 
-      name: 'Y!mobile',
+      name: 'Y!Mobile',
       img_url: 'https://bitwave.showcase-tv.com/wp-content/uploads/2019/12/ymobile-logo.png',
       description: 'Y!mobile uses Softbank towers in providing their mobile plans. While they have an English guide, there is no English customer service support.',
       english_support: false,

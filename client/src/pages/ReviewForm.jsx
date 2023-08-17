@@ -124,7 +124,9 @@ const ReviewForm = () => {
 
         : (
         <div className="main">
-            <Navbar className="navbar" text="We appreciate your reviews"/>
+            <Navbar 
+            /* className="navbar" */
+            text="We appreciate your reviews"/>
             <div className="wrapper">
               <div className="scores-div">
                 <Radio 

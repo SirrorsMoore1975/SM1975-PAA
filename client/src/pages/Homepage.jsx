@@ -5,6 +5,7 @@ import '../styles/Homepage.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Card from '../components/Card';
+import providersJSON from '../data/provider.json';
 
 
 const Homepage = () => {
@@ -31,17 +32,17 @@ const Homepage = () => {
 
       <div className="grid-container">
         {
-          providers.map((provider) => {
+          providers.map((provider,index) => {
             return (
               <Card 
-                key={provider.id}
+                key={index+100}
                 cardName={provider.name}
                 img_url={provider.img_url}
                 averageScore={provider.overall}
                 english_support={provider.english_support}
                 site_url={provider.site_url}
                 description={provider.description}
-                onClick={() => navigate('/' + provider.name)}
+                onClick={() => navigate(providersJSON[index].path)}
                 buttonClassName="button"
               />
             )
