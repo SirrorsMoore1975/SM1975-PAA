@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo} from "react";
+import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ReviewCard from "../components/ReviewCard";
@@ -16,25 +16,11 @@ const Provider = ({ provider_id }) => {
     'Content-Type': 'application/json'
   }
 
-  //const [provider, setProvider] = useState([{},[]]);
-  // const provider = [{},[]];
-
-  // provider is expected to be = [{}, []]
-  const provider = useMemo(async ()=>{
-    
-      const response = await axios.get(`/api/provider/${provider_id}`, header)
-      return [response.data[0],response.data[1]]
-      // provider[0] = response.data[0];
-      // provider[1] = response.data[1];
-    
-      // setProvider(response.data)
-  }, [provider_id]);
-  console.log("😐",provider);
+  const [provider, setProvider] = useState([{},[]]);
   
-  /*
   useEffect(() => {
     getProvider();
-  },)
+  },[provider_id])
 
   async function getProvider() {
     // for a general provider page. replace the path with axios.get(`/api/provider/${provider_id}`)
@@ -47,7 +33,7 @@ const Provider = ({ provider_id }) => {
     }
     
   }
-  */
+  
 
   return (
     <div>
