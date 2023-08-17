@@ -1,7 +1,5 @@
-import React, {useMemo} from "react";
+import React, {useState, useEffect, useMemo, useRef} from "react";
 import { useNavigate } from "react-router-dom";
-// import DropdownMenu from "./DropdownMenu";
-// import Button from './Button';
 
 import providerJSON from "../data/provider.json";
 
@@ -19,7 +17,6 @@ const options = [
 
 const ProviderNavbar = ( props ) => {
     const  { provider_id } = props;
-    // const result = { goLeft, currentView, goRight}
     const provider_data = useMemo(()=>{
         if(provider_id){
             return {
@@ -30,29 +27,70 @@ const ProviderNavbar = ( props ) => {
         } else {
             return undefined;
         }
-
     },[provider_id])
     
-    
     const navigate = useNavigate();
-    
     
     const handleGoLeft = (e) => {
         e.preventDefault();
         navigate(options[provider_data?.goLeft].path);
     };
-  
+    
     const handleGoRight = (e) => {
         e.preventDefault();
         navigate(options[provider_data?.goRight].path);
     };
     
+    const dropdownRef = useRef(null); 
+    const [isActive, setIsActive] = useState(false);
+    
     const handleDropdownMenu = (e) => {
         e.preventDefault();
+        setIsActive(!isActive)
     };
 
-    
-   
+    const Dropdown = () => {
+        return (
+            <div>
+                <div className="menu-container">
+                <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
+                    <ul>
+                        {options.map((provider, index) => (
+                            <li 
+                                key={index}
+                                value={provider.provider_id}
+                                >
+                                    <button className="dropdown-button" onClick={(e)=>{
+                                        e.preventDefault();
+                                        setIsActive(!isActive);
+                                        if(provider_id !== provider.provider_id)
+                                        navigate(`${provider.path}`);}}>
+                                    {provider.text} 
+                                    </button>
+                            </li>   
+                        ))}
+                    </ul>
+                </nav>
+                </div>
+            </div>
+        )
+    }
+
+    useEffect(()=>{
+        const pageClickEvent = (eve) =>{
+            console.log(eve);
+            if(!dropdownRef.current && !dropdownRef.current.contains(eve.target)){
+                setIsActive(!isActive)
+            }
+        }
+        if(isActive){
+            window.addEventListener('click', pageClickEvent);
+        }
+        return () => {
+            window.removeEventListener('click',pageClickEvent)
+        }
+    },[isActive])
+
     return (
         <>
             <div className="provider-navbar">
@@ -65,12 +103,14 @@ const ProviderNavbar = ( props ) => {
                     <span>
                         Select: 
                         <button 
-                            className="button dropdown" 
+                            className="dropdown" 
                             onClick={handleDropdownMenu} 
                         >
-                        {options[provider_data?.currentView].text}  
+                        <span>
+                            {`${options[provider_data?.currentView].text}`}
+                        </span>
                         </button>
-                        <nav><ul><li>{"hello"}</li></ul></nav>
+                        <Dropdown />
                     </span>
                     <span>
                         <button 
