@@ -57,19 +57,26 @@ const ProviderNavbar = ( props ) => {
         <>
             <div className="provider-navbar">
                 <div className="provider-pannel">
-                    <button 
-                        className="button" 
-                        onClick={handleGoLeft}>&lt;</button>
-                Select: 
-                <button 
-                    className="button" 
-                    onClick={handleDropdownMenu} 
-    >
-                    {options[provider_data?.currentView].text}  
-                    </button>
-                    <button 
-                        className="button"
-                        onClick={handleGoRight}>&gt;</button> 
+                    <span>
+                        <button 
+                            className="button" 
+                            onClick={handleGoLeft}>&lt;</button>
+                    </span>
+                    <span>
+                        Select: 
+                        <button 
+                            className="button dropdown" 
+                            onClick={handleDropdownMenu} 
+                        >
+                        {options[provider_data?.currentView].text}  
+                        </button>
+                        <nav><ul><li>{"hello"}</li></ul></nav>
+                    </span>
+                    <span>
+                        <button 
+                            className="button"
+                            onClick={handleGoRight}>&gt;</button> 
+                    </span>
                 </div>
             </div>
         </>

@@ -5,7 +5,12 @@
     justify-content: space-between;
     background-color:#66BFBF;
 }
+.provider-pannel {
+    padding: 0 500px 0 500px;
+}
 
-
+.dropdown {
+    padding: 10px 20px 10px 20px;
+}
 
 
