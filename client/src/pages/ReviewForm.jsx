@@ -119,6 +119,10 @@ const ReviewForm = () => {
   // HANDLER FUNCTION
   const handleSubmission = async (event) => {
     event.preventDefault();
+    // Check name, email and textarea before allowing the submission of the review to be written into the database
+    // They cannot be empty
+    // email cannot be repeated (may required a new api to handle this request and get response, true should warn this email been use for this review already - might required feature such as login user with password to edit comment in the future; false should check the next item)
+    // textarea: 1.) must not be empty; 2.) must have at least 10 characters long
     setIsSubmitted(!isSubmitted);
     // const response = 
     const response = await axios.post('/api/review', reviewData)
