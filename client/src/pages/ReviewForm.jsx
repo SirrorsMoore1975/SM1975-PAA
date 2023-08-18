@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useParams} from "react-router-dom";
 
 import axios from 'axios';
 import Navbar from '../components/Navbar';
@@ -11,9 +12,25 @@ import Radio from '../components/Radio';
 
 import ThankYou from '../pages/ThankYou';
 
+import providerJSON from "../data/provider.json";
 import "../styles/Form.css";
 
-const reviewData = {
+const createReviewData = (provider_id,reviewer_name,email,overall,ease_of_use,coverage,price,customer_service,customer_review) => {
+  return {
+    provider_id,
+    reviewer_name,
+    email,
+    overall,
+    ease_of_use,
+    coverage,
+    price,
+    customer_service,
+    customer_review
+  }
+}
+
+const reviewData = 
+{
   provider_id: "", 
   reviewer_name: "", 
   email: "", 
@@ -26,6 +43,7 @@ const reviewData = {
 };
 
 const ReviewForm = () => {
+  const { id } = useParams();
   
   const [, getOverAllScore] = useState(0);
   const setOverAllScore = (score) =>{
@@ -80,7 +98,7 @@ const ReviewForm = () => {
   const setCompName = (compName) => {
     
     getCompName(compName);
-    reviewData.provider_id = Number(compName);
+    reviewData.provider_id= Number(id);
     
   }
     
@@ -174,9 +192,10 @@ const ReviewForm = () => {
                   onChange={ handleEmailInput }
                 />
 
-                {<DropdownMenu
+                {/* {<DropdownMenu
                   className="menu"  
-                  setProviderId={setCompName}/>}
+                  setProviderId={setCompName}/>} */}
+                {`You are currently reviewing ${providerJSON[id - 1].text}`}
                   
               </div>
             </div>

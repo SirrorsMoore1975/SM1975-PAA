@@ -24,7 +24,7 @@ const App = () => {
         },
         ...providers,
         {
-            path:'/reviewform',
+            path:'/reviewform/:id',
             element:<ReviewForm />
         },
         {
