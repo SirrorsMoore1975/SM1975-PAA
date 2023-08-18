@@ -6,12 +6,15 @@ import providerJSON from "../data/provider.json";
 import "../styles/ProviderNavbar.css";
 
 const options = [
-    // {
-    //     provider_id:0,
-    //     value:"not available",
-    //     text:"not available",
-    //     path:"/errorpage"
-    // }, 
+    /**
+     * providerJSON has the following key:
+     * {
+     *      provider_id:0,
+     *      value:"not available",
+     *      text:"not available",
+     *      path:"/errorpage"
+     * }
+     */
     ...providerJSON
 ];
 
@@ -20,9 +23,9 @@ const ProviderNavbar = ( props ) => {
     const provider_data = useMemo(()=>{
         if(provider_id){
             return {
-                "goLeft":provider_id - 1 - 1 < 0 ? options.length - 1 : provider_id - 1 - 1,
-                "currentView" :provider_id * 1 - 1,
-                "goRight": ( provider_id -1 + 1 ) % (options.length - 1)
+                "goLeft":provider_id - 2 < 0 ? options.length - 1 : provider_id - 2,
+                "currentView" :provider_id - 1,
+                "goRight": ( provider_id ) % (options.length)
             }
         } else {
             return undefined;
@@ -79,15 +82,15 @@ const ProviderNavbar = ( props ) => {
     useEffect(()=>{
         const pageClickEvent = (eve) =>{
             console.log(eve);
-            if(!dropdownRef.current && !dropdownRef.current.contains(eve.target)){
+            if(!dropdownRef.current && !dropdownRef.current.contains(eve.target) && isActive){
                 setIsActive(!isActive)
             }
         }
         if(isActive){
-            window.addEventListener('click', pageClickEvent);
+            document.addEventListener('click', pageClickEvent);
         }
         return () => {
-            window.removeEventListener('click',pageClickEvent)
+            document.removeEventListener('click',pageClickEvent)
         }
     },[isActive])
 
