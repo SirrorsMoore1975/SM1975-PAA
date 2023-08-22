@@ -120,6 +120,8 @@ const ReviewForm = () => {
   
   // SERVER RESPONSE STATE
   const [serverResponse, setServerResponse] = useState('Pending');
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   
   // HANDLER FUNCTION
@@ -129,11 +131,20 @@ const ReviewForm = () => {
     // They cannot be empty
     // email cannot be repeated (may required a new api to handle this request and get response, true should warn this email been use for this review already - might required feature such as login user with password to edit comment in the future; false should check the next item)
     // textarea: 1.) must not be empty; 2.) must have at least 10 characters long
-    setIsSubmitted(!isSubmitted);
+    
     // const response = 
-    const response = await axios.post('/api/review', reviewData, header)
+    const response = await axios.post('/api/review', reviewData)
       .catch((error) => console.log(error));  
-    setServerResponse(response.data);
+      const {usedWithProvider, message} = await response.data
+      if(usedWithProvider){
+        setAttemptedSubmit(true);
+        setAlertMessage(message);
+      } else {
+        setAttemptedSubmit(false);
+        setAlertMessage("");
+        setIsSubmitted(!isSubmitted);
+        setServerResponse(message);
+      }
     
   };
 
@@ -201,7 +212,7 @@ const ReviewForm = () => {
                   value={ email }
                   onChange={ handleEmailInput }
                 />
-
+                {attemptedSubmit ? <><div className="alert-submited-email">{alertMessage}</div></> : null}
                 {/* {<DropdownMenu
                   className="menu"  
                   setProviderId={setCompName}/>} */}
