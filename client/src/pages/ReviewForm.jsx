@@ -133,19 +133,25 @@ const ReviewForm = () => {
     // textarea: 1.) must not be empty; 2.) must have at least 10 characters long
     
     // const response = 
-    const response = await axios.post('/api/review', reviewData)
-      .catch((error) => console.log(error));  
-      const {usedWithProvider, message} = await response.data
-      if(usedWithProvider){
-        setAttemptedSubmit(true);
-        setAlertMessage(message);
-      } else {
-        setAttemptedSubmit(false);
-        setAlertMessage("");
-        setIsSubmitted(!isSubmitted);
-        setServerResponse(message);
-      }
-    
+    try {
+      
+      const response = await axios.post('/api/review', reviewData)
+      const responseData = response.data
+        const usedWithProvider = responseData?.usedWithProvider;
+        const message = responseData?.message;
+        if(usedWithProvider){
+          setAttemptedSubmit(true);
+          setAlertMessage(message);
+        } else {
+          setAttemptedSubmit(false);
+          setAlertMessage("");
+          setIsSubmitted(!isSubmitted);
+          setServerResponse(message);
+        }
+      
+    } catch (error){
+      console.error(error);
+    }
   };
 
   
