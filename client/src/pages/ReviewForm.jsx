@@ -29,6 +29,11 @@ const createReviewData = (provider_id,reviewer_name,email,overall,ease_of_use,co
   }
 }
 
+const header = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+}
+
 const reviewData = 
 {
   provider_id: "", 
@@ -125,7 +130,7 @@ const ReviewForm = () => {
     // textarea: 1.) must not be empty; 2.) must have at least 10 characters long
     setIsSubmitted(!isSubmitted);
     // const response = 
-    const response = await axios.post('/api/review', reviewData)
+    const response = await axios.post('/api/review', reviewData, header)
       .catch((error) => console.log(error));  
     setServerResponse(response.data);
     
