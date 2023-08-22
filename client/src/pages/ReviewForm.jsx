@@ -99,13 +99,14 @@ const ReviewForm = () => {
   }
 
   // DROP DOWN MENU STATE
-  const [, getCompName] = useState('');
-  const setCompName = (compName) => {
+  reviewData.provider_id= Number(id);
+  // const [, getCompName] = useState('');
+  // const setCompName = (compName) => {
     
-    getCompName(compName);
-    reviewData.provider_id= Number(id);
+  //   getCompName(compName);
+  //   reviewData.provider_id= Number(id);
     
-  }
+  // }
     
   // COMMENT STATE
   const [comment, setComment] = useState('');
