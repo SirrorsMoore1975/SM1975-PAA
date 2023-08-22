@@ -136,12 +136,13 @@ const ReviewForm = () => {
     try {
       
       const response = await axios.post('/api/review', reviewData, header)
-      const responseData = response.data
+      const responseData = await response.data
         const usedWithProvider = responseData?.usedWithProvider;
         const message = responseData?.message;
         if(usedWithProvider){
           setAttemptedSubmit(true);
           setAlertMessage(message);
+          console.log("😠", "usedWithProvider = true")
         } else {
           setAttemptedSubmit(false);
           setAlertMessage("");
@@ -150,7 +151,7 @@ const ReviewForm = () => {
         }
       
     } catch (error){
-      console.error(error);
+      console.log(error);
     }
   };
 
