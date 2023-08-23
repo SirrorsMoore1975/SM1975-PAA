@@ -50,31 +50,31 @@ const reviewData =
 const ReviewForm = () => {
   const { id } = useParams();
   
-  const [, getOverAllScore] = useState(0);
+  const [overAllScore, getOverAllScore] = useState(0);
   const setOverAllScore = (score) =>{
       getOverAllScore(score);
       reviewData.overall = Number(score);
   }
 
-  const [, getEOUScore] = useState(0);
+  const [EOUScore, getEOUScore] = useState(0);
   const setEOUScore = (score) =>{
     getEOUScore(score);
     reviewData.ease_of_use = Number(score);
   }
 
-  const [, getCoverageScore] = useState(0);
+  const [coverageScore, getCoverageScore] = useState(0);
   const setCoverageScore = (score) =>{
     getCoverageScore(score);
     reviewData.coverage = Number(score);
   }
 
-  const [, getPriceScore] = useState(0);
+  const [priceScore, getPriceScore] = useState(0);
   const setPriceScore = (score) =>{
     getPriceScore(score);
     reviewData.price = Number(score);
   }
 
-  const [, getCustomerServiceScore] = useState(0);
+  const [customerServiceScore, getCustomerServiceScore] = useState(0);
   const setCustomerServiceScore = (score) =>{
     getCustomerServiceScore(score);
     reviewData.customer_service= Number(score);
@@ -124,6 +124,33 @@ const ReviewForm = () => {
   const [alertMessage, setAlertMessage] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   
+  const finalConfirmWindows = () => {
+    return (
+      <>
+        <div className="confirm-window">
+          <ul>
+            <li>{`Provider: ${providerJSON[id - 1].text}`}</li>
+            <li>{`Reviewer name: ${nickname}`}</li>
+            <li>{`Email: ${email}`}</li>
+            <li>{`Overall score: ${overAllScore}`}</li>
+            <li>{`Ease of use score: ${EOUScore}`}</li>
+            <li>{`Coverage score: ${coverageScore}`}</li>
+            <li>{`Price score: ${priceScore}`}</li>
+            <li>{`Customer service score: ${customerServiceScore}`}</li>
+          </ul>
+          <div className="confirm-panel">
+            <span>
+              <button>{`Cancel`}</button>
+              </span>
+            <span>
+              <button>{`Confirm`}</button>
+              </span>
+          </div>
+        </div>
+      </>
+    )
+  }
+
   // HANDLER FUNCTION
   const handleSubmission = async (event) => {
     event.preventDefault();
