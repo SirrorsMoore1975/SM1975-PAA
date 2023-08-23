@@ -132,7 +132,6 @@ const ReviewForm = () => {
     // email cannot be repeated (may required a new api to handle this request and get response, true should warn this email been use for this review already - might required feature such as login user with password to edit comment in the future; false should check the next item)
     // textarea: 1.) must not be empty; 2.) must have at least 10 characters long
     
-    // const response = 
     try {
       
       const response = await axios.post('/api/review', reviewData, header)
@@ -154,8 +153,6 @@ const ReviewForm = () => {
       console.error(error);
     }
   };
-
-  
 
   return (
     <>  
@@ -220,10 +217,12 @@ const ReviewForm = () => {
                   onChange={ handleEmailInput }
                 />
                 {attemptedSubmit ? <><div className="alert-submited-email">{alertMessage}</div></> : null}
-                {/* {<DropdownMenu
-                  className="menu"  
-                  setProviderId={setCompName}/>} */}
-                {`You are currently reviewing ${providerJSON[id - 1].text}`}
+                
+                <div>
+
+                {`You are currently reviewing:`} <br />
+                <span className="provider-highlight">{`${providerJSON[id - 1].text}`}</span>
+                </div>
                   
               </div>
             </div>

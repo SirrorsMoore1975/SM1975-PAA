@@ -50,3 +50,11 @@ textarea {
   display: flex;
   flex-direction: column;
 }
+
+.alert-submited-email {
+  color: #FF0063;
+}
+
+.provider-highlight {
+  color: #66BFBF;
+}
