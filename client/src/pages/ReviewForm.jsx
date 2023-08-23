@@ -127,7 +127,8 @@ const ReviewForm = () => {
   const finalConfirmWindows = () => {
     return (
       <>
-        <div className="confirm-window">
+        <div className={`confirm-window-container`}> 
+        <nav className={`confirm-window ${isActive ? 'active' : 'inactive'}`}>
           <ul>
             <li>{`Provider: ${providerJSON[id - 1].text}`}</li>
             <li>{`Reviewer name: ${nickname}`}</li>
@@ -146,6 +147,7 @@ const ReviewForm = () => {
               <button>{`Confirm`}</button>
               </span>
           </div>
+          </nav>
         </div>
       </>
     )
