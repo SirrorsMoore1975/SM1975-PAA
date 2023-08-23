@@ -130,32 +130,22 @@ function setupServer () {
         "message": "This email has already been used for this provider."
       };
 
-    // console.log(testEmail);
-    // console.log(review.email);
-    // const payload = { usedWithProvider, message } ;
-    if(testEmail.length === 0) { // this email has never been used
+    if(testEmail.length === 0) { 
       const insertion = await db('review_detail')
         .insert(review);
-
-        // console.log(review);
-        // console.log(insertion);
         
         res.status(200).json(payload_reviewAdded);
     } else {
-        // console.log('line 143', review.provider_id, testEmail[0].provider_id);
-
         let hasUsedWithProvider = false;
-
         for (let i = 0; i < testEmail.length; i++) {
           if(review.provider_id === testEmail[i].provider_id) {
             hasUsedWithProvider = true;
           }
         }
 
-      if(hasUsedWithProvider) { // this email has already been used to review the current provider.
-
+      if(hasUsedWithProvider) { 
         res.status(400).json(payload_reviewRejected);
-      } else { // this email has been used, but for a different provider
+      } else { 
         const insertion = await db('review_detail')
           .insert(review);
           
