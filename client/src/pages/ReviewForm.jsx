@@ -139,19 +139,19 @@ const ReviewForm = () => {
       const responseData = await response.data
         const usedWithProvider = responseData?.usedWithProvider;
         const message = responseData?.message;
-        if(usedWithProvider){
-          setAttemptedSubmit(true);
-          setAlertMessage(message);
-          console.log("😠", "usedWithProvider = true")
-        } else {
-          setAttemptedSubmit(false);
-          setAlertMessage("");
+        if(!usedWithProvider){
           setIsSubmitted(!isSubmitted);
+          setAttemptedSubmit(false);
+          setAlertMessage(null);
           setServerResponse(message);
-        }
+        } 
       
     } catch (error){
-      console.log(error);
+      const response = error.response.data;
+      const responseMessage = response.message
+      setAttemptedSubmit(true);
+      setAlertMessage(responseMessage);
+      console.error(error);
     }
   };
 
