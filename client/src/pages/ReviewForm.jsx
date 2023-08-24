@@ -123,6 +123,7 @@ const ReviewForm = () => {
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   
   const finalConfirmWindows = () => {
     return (
