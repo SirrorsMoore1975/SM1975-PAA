@@ -176,6 +176,15 @@ const ReviewForm = () => {
         } 
       
     } catch (error){
+      if(typeof error.data === "string" && error.data.startsWith("\n<!doctype html>\n")){
+        const responseErrorData = error.data;
+        const errorWindow = window.open('', '_blank');
+        errorWindow.document.write(responseErrorData);
+        errorWindow.document.close()
+      } 
+      // else if (!Array.isArray(error.data)){
+
+      // }
       const response = error.response.data;
       const responseMessage = response.message
       setAttemptedSubmit(true);
