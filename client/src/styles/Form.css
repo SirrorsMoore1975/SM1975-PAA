@@ -63,13 +63,13 @@ textarea {
   position: relative;
 }
 
-.confirm-windows.active {
+.confirm-windows.active, .final-confirm-windows.acitve {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.confirm-windows {
+.confirm-windows, .final-confirm-windows {
   background: #ffffff;
   border-radius: 8px;
   position: absolute;

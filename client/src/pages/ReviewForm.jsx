@@ -91,11 +91,18 @@ const ReviewForm = () => {
 
   // EMAIL STATE
   const [email, setEmail] = useState('');
+  const [isEmailValid, setIsEmailValid] = useState(true);
 
   const handleEmailInput = (event) => {
     const value = event.target.value;
     setEmail(value);
+   
     reviewData.email = value;
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    const isValid = emailRegex.test(value);
+    if(isValid){
+      console.log("email is valid:",value);
+    }
   }
 
   // DROP DOWN MENU STATE
@@ -123,9 +130,9 @@ const ReviewForm = () => {
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   
-  const finalConfirmWindows = () => {
+  const FinalConfirmWindows = () => {
     return (
       <>
         <div className={`confirm-window-container`}> 
@@ -284,6 +291,9 @@ const ReviewForm = () => {
         
         )
       }
+    </div>
+    <div className={`final-confirm-windows ${isActive ? 'active' : 'inactive'}`}>
+      {<FinalConfirmWindows />}
     </div>
     </>
   );
