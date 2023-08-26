@@ -153,10 +153,10 @@ const ReviewForm = () => {
           </ul>
           <div className="confirm-panel">
             <span>
-              <button onClick={()=> {setIsActive(false)}}>{`Cancel`}</button>
+              <button onClick={(e)=> {e.preventDefault(); setIsActive(false)}}>{`Cancel`}</button>
               </span>
             <span>
-              <button onClick={ handleSubmission}>{`Confirm`}</button>
+              <button onClick={ handleSubmission }>{`Confirm`}</button>
               </span>
           </div>
           </nav>
