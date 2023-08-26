@@ -130,10 +130,14 @@ const ReviewForm = () => {
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
+  const [finalConfirmWindows, setFinalConfirmWindows] = useState(null)
   
-  const FinalConfirmWindows = () => {
-    return (
+  const handleFinalConfirmWindows = (event) => {
+    event.preventDefault();
+    setIsActive(true);
+    
+    const result = (
       <>
         <div className={`confirm-window-container`}> 
         <nav className={`confirm-window ${isActive ? 'active' : 'inactive'}`}>
@@ -149,16 +153,17 @@ const ReviewForm = () => {
           </ul>
           <div className="confirm-panel">
             <span>
-              <button>{`Cancel`}</button>
+              <button onClick={()=> {setIsActive(false)}}>{`Cancel`}</button>
               </span>
             <span>
-              <button>{`Confirm`}</button>
+              <button onClick={ handleSubmission}>{`Confirm`}</button>
               </span>
           </div>
           </nav>
         </div>
       </>
     )
+    setFinalConfirmWindows(result);
   }
 
   // HANDLER FUNCTION
@@ -281,20 +286,22 @@ const ReviewForm = () => {
                   value={ comment }
                   onChange={ handleCommentInput }
                 />
+                {finalConfirmWindows}
             <Button
             className="button submit"
               text="Submit"
-              onClick = { handleSubmission }
+              onClick = { handleFinalConfirmWindows }
             />
+             <div className={`final-confirm-windows ${isActive ? 'active' : 'inactive'}`}>
+      {isActive ? <>{finalConfirmWindows}</>: null}
+    </div>
             <Footer className="footer" text="© 2023 Phone Carrier Review App"/>
         </div>
         
         )
       }
     </div>
-    <div className={`final-confirm-windows ${isActive ? 'active' : 'inactive'}`}>
-      {<FinalConfirmWindows />}
-    </div>
+   
     </>
   );
 }
