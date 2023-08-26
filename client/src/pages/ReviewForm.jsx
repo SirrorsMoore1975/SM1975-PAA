@@ -153,7 +153,7 @@ const ReviewForm = () => {
           </ul>
           <div className="confirm-panel">
             <span>
-              <button onClick={(e)=> {e.preventDefault(); setIsActive(false)}}>{`Cancel`}</button>
+              <button onClick={(e)=> {e.preventDefault(); setIsActive(false); }}>{`Cancel`}</button>
               </span>
             <span>
               <button onClick={ handleSubmission }>{`Confirm`}</button>
@@ -163,7 +163,12 @@ const ReviewForm = () => {
         </div>
       </>
     )
-    setFinalConfirmWindows(result);
+    if(isActive){
+
+      setFinalConfirmWindows(result);
+    } else {
+      setFinalConfirmWindows(null);
+    }
   }
 
   // HANDLER FUNCTION
