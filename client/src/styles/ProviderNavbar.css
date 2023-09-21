@@ -59,13 +59,15 @@
     text-align:center;
     border-bottom: 1px solid #dddddd;
 }
-  
-.menu li a {
+
+/*
+.menu li button {
     text-decoration: none;
     color: #333333;
     padding: 15px 20px;
     display: block;
 }
+*/
 
 .dropdown-button {
     border: none;
