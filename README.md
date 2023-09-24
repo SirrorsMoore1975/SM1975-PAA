@@ -3,6 +3,19 @@
 Link to Deployed Site : https://phone-review-app.onrender.com/
 (Currently Not Available)
 
+### Introduction
+## What is Phone-Review-App?
+
+Phone-Review-App is a project that collect user's review over Japanese main phone carrier. Users can provider their view of each of the carrier they might have experienced.
+
+## How to set up the project in local machine
+# For development
+1. create `.env` and copy contents in `.env.example`, replace the field for `DB_NAME` and `DB_PASSWORD`, make note to the name use.
+1. run `psql` and create a database associate with the `DB_NAME`
+1. `npm run build` to install client's (React) and server's dependancy, if you have created the database, the knex migration and seed should work; but in case this fail, you can do migration using `npm run migrate` and seed using `npm run seed`;
+1. run the program using `npm run start`
+
+
 # The Frontend
 
 ## client/src/index.js
@@ -15,24 +28,34 @@ This file contains the routes and the client side endpoints for each separate pa
 
 `Card` - the cards that are displayed for each carrier on the Homepage  
 
-`Dropdown Menu` - the dropdown menu that allows user to select which carrier they are reviewing on the Forms page 
+`Dropdown Menu` - the dropdown menu that allows user to select which carrier they are reviewing on the `Provider` page
 
 `Footer` - the footer that is displayed on all pages 
 
 `Header` - the header that is displayed on the Homepage and the thank you message after submission 
 
-`Input` - a template for the input fiels on the Forms page 
+`Input` - a template for the input fields on the Forms page 
 
 `Navbar` - alternate version of the Header component; this one has a home button in the upper right corner 
 
 `ProviderInfo` - displays the hero at the top of each carrier profile page
 
+`ProviderInfoNavBar` - provide components to navigate between carrier without first going back to the home page
+
 `Radio` - Score system for user to choose 0 - 10
 
+`ReviewCard` - The components to show the average result score users has given
+
 ## Pages
-`Form` - the page where the user will input their scores and write their review 
+`ErrorPage` - dummy page for development purpose only
 
 `Homepage` - the homepage; this is the root path ("/"). 
+
+`Provider` - the page which display the provider info and its average scores.
+
+`ReviewForm` - the page where the user will input their scores and write their review.
+
+`ThankYou` - the page that say thank you when review has successfully added.
 
 Additonally, there is a page for each of the nine carriers and a `Provider.css` page for styling these pages.  
 
