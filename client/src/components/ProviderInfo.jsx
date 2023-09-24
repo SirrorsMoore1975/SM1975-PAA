@@ -15,8 +15,8 @@ const ProviderInfo = (props) => {
     
     <div className='provider-hero-div'>
       <div className='provider-info'>
-        <h1>{`[${provider_id}]`}</h1>
-        <h2>{provider.name}</h2>
+        <h1>{`[${provider_id}] ${provider.name}`}</h1>
+        {/* <h2>{provider.name}</h2> */}
         <p>English Support: {provider.english_support === true ? '✅' : '❌'}</p>
         <p>{provider.description}</p>
         <a href={provider.site_url}>Click here for the provider website.</a>

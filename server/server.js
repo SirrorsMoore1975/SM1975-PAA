@@ -121,35 +121,35 @@ function setupServer () {
       .select('*')
       .where('email', review.email)
       .timeout(1500);
+      const payload_reviewAdded = {
+        "usedWithProvider": false,
+        "message": "Your review has been added."
+      };
+      const payload_reviewRejected = {
+        "usedWithProvider": true,
+        "message": "This email has already been used for this provider."
+      };
 
-    // console.log(testEmail);
-    // console.log(review.email);
-    if(testEmail.length === 0) { // this email has never been used
+    if(testEmail.length === 0) { 
       const insertion = await db('review_detail')
         .insert(review);
-
-        // console.log(review);
-        // console.log(insertion);
-
-        res.status(200).send("Your review has been added.");
+        
+        res.status(200).json(payload_reviewAdded);
     } else {
-        // console.log('line 143', review.provider_id, testEmail[0].provider_id);
-
-        let wasUsedWithProvider = false;
-
+        let hasUsedWithProvider = false;
         for (let i = 0; i < testEmail.length; i++) {
           if(review.provider_id === testEmail[i].provider_id) {
-            wasUsedWithProvider = true
+            hasUsedWithProvider = true;
           }
         }
 
-      if(wasUsedWithProvider) { // this email has already been used to review the current provider.
-        res.status(400).send("This email has already been used for this provider.");
-      } else { // this email has been used, but for a different provider
+      if(hasUsedWithProvider) { 
+        res.status(400).json(payload_reviewRejected);
+      } else { 
         const insertion = await db('review_detail')
           .insert(review);
-      
-        res.status(200).send("Your review has been added.");
+          
+        res.status(200).json(payload_reviewAdded);
       }
     }
   });

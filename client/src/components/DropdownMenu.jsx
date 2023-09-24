@@ -1,6 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import "../styles/DropdownMenu.css";
 import provider from "../data/provider.json";
+
+/*
+const Dropdown = ({ 
+  options, 
+  provider_id, 
+  menuClassName="menu-container", 
+  dropdownRef,
+  navClassname="menu", 
+  activeClassName="active", 
+  buttonClassName="dropdown-button"
+  }) => {
+    const dropdownRef = useRef(null); 
+    const [isActive, setIsActive] = useState(false);
+    
+    const handleDropdownMenu = (e) => {
+        e.preventDefault();
+        setIsActive(!isActive)
+    };
+  return (
+    <div>
+        <div className="menu-container">
+        <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
+            <ul>
+                {options.map((provider, index) => (
+                    <li 
+                        key={index}
+                        value={provider.provider_id}
+                        >
+                            <button className={"dropdown-button "} onClick={(e)=>{
+                                e.preventDefault();
+                                setIsActive(!isActive);
+                                if(provider_id !== provider.provider_id)
+                                navigate(`${provider.path}`);}}>
+                                    <span>
+                            {provider.text} 
+                                    </span>
+                            </button>
+                    </li>   
+                ))}
+            </ul>
+        </nav>
+        </div>
+    </div>
+)
+
+}
+
+*/
+
+
+
+/*
 
 const options = [
   {value: "", text:"--- Select a phone provider ---"},
@@ -62,5 +114,8 @@ DropdownMenu.defaultProps ={
     size:1,
     prefill:0
 }
+
+
+*/
 
 export default DropdownMenu;

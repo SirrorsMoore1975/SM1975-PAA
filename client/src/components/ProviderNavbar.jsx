@@ -63,12 +63,14 @@ const ProviderNavbar = ( props ) => {
                                 key={index}
                                 value={provider.provider_id}
                                 >
-                                    <button className="dropdown-button" onClick={(e)=>{
+                                    <button className={"dropdown-button "} onClick={(e)=>{
                                         e.preventDefault();
                                         setIsActive(!isActive);
                                         if(provider_id !== provider.provider_id)
                                         navigate(`${provider.path}`);}}>
+                                            <span>
                                     {provider.text} 
+                                            </span>
                                     </button>
                             </li>   
                         ))}
@@ -103,10 +105,8 @@ const ProviderNavbar = ( props ) => {
                             className="button" 
                             onClick={handleGoLeft}>&lt;</button>
                     </span>
-                    <span>
-                        Select: 
-                        <button 
-                            className="dropdown" 
+                    <span className={"select-field"}>Select: <button 
+                            className="dropdown menu-trigger" 
                             onClick={handleDropdownMenu} 
                         >
                         <span>

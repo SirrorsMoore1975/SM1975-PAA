@@ -50,3 +50,35 @@ textarea {
   display: flex;
   flex-direction: column;
 }
+
+.alert-submited-email {
+  color: #FF0063;
+}
+
+.provider-highlight {
+  color: #66BFBF;
+}
+
+.confirm-windows-container {
+  position: relative;
+}
+
+.confirm-windows.active, .final-confirm-windows.acitve {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.confirm-windows, .final-confirm-windows {
+  background: #ffffff;
+  border-radius: 8px;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  width: 200px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
