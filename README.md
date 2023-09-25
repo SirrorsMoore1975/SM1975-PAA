@@ -3,13 +3,13 @@
 Link to Deployed Site : https://phone-review-app.onrender.com/
 (Currently Not Available)
 
-### Introduction
+# Introduction
 ## What is Phone-Review-App?
 
 Phone-Review-App is a project that collect user's review over Japanese main phone carrier. Users can provider their view of each of the carrier they might have experienced.
 
 ## How to set up the project in local machine
-# For development
+### For development
 1. create `.env` and copy contents in `.env.example`, replace the field for `DB_NAME` and `DB_PASSWORD`, make note to the name use.
 1. run `psql` and create a database associate with the `DB_NAME`
 1. `npm run build` to install client's (React) and server's dependancy, if you have created the database, the knex migration and seed should work; but in case this fail, you can do migration using `npm run migrate` and seed using `npm run seed`;
@@ -21,7 +21,7 @@ Phone-Review-App is a project that collect user's review over Japanese main phon
 ## client/src/index.js
 This file contains the routes and the client side endpoints for each separate page
 
-## Components
+### Components
 `AvgScores` - displays all of the average scores on the carrier profile pages (the pink card)  
 
 `Button` - a template for most of the buttons on the app 
@@ -46,7 +46,7 @@ This file contains the routes and the client side endpoints for each separate pa
 
 `ReviewCard` - The components to show the average result score users has given
 
-## Pages
+### Pages
 `ErrorPage` - dummy page for development purpose only
 
 `Homepage` - the homepage; this is the root path ("/"). 
@@ -59,7 +59,7 @@ This file contains the routes and the client side endpoints for each separate pa
 
 Additonally, there is a page for each of the nine carriers and a `Provider.css` page for styling these pages.  
 
-## Radio.jsx
+### Radio.jsx
 ```
 <span className={className}>
    {input.value}
@@ -196,7 +196,7 @@ example body:
 }
 ```
 
-## Helpful Resources
+# Helpful Resources
 [React Router Docs](https://reactrouter.com/en/main) 
 
 [Faker JS Docs](https://fakerjs.dev/) 
@@ -204,7 +204,7 @@ example body:
 [Our Color Palette](https://colorhunt.co/palette/66bfbfeaf6f6ffffffff0063)
 
 
-### LICENSE
+# LICENSE
 MIT License
 
 Copyright (c) 2023 SM1975-PAA
