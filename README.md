@@ -60,6 +60,7 @@ This file contains the routes and the client side endpoints for each separate pa
 Additonally, there is a page for each of the nine carriers and a `Provider.css` page for styling these pages.  
 
 ### Radio.jsx
+The following is the code inside Radio.jsx. 
 ```jsx
 <span className={className}>
    {input.value}
@@ -78,23 +79,27 @@ Additonally, there is a page for each of the nine carriers and a `Provider.css` 
         </input>
         </label>
 ```
-```html
+```jsx
 <Radio 
-className = {string}, label={string}, radioName={string}, scoreSetter={function}/>
+  className={P:string} 
+  label={Q:string} 
+  radioName={R:string} 
+  scoreSetter={S:function}
+  />
 ```
 
 `radioName` is the radio name for all those name for radio, in this example, it is bob
 
 React in radio button uses a boolean method call `checked` to determine which buttons in the radio set are selected.
-```html
-<input checked={ true } name=”bob” value=”0”>{ /* commercial secret */ }</input>
-<input checked={ false } name=”bob” value=”1”>{ /* commercial secret */ }</input>
-<input checked={ false } name=”bob” value=”2”>{ /* commercial secret */ }</input>
-```
+```jsx
 
+  <input checked={ true } name="bob" value="0">{ /* commercial secret */ }</input>
+  <input checked={ false } name="bob" value="1">{ /* commercial secret */ }</input>
+  <input checked={ false } name="bob" value="2">{ /* commercial secret */ }</input>
+```
 We have a `useState` that default the selected button to 0 score. And the same `useState` has function to change that selected button value. 
 ```jsx
-const [selectRadioButton, setSelectRadioButton] = useState(‘0’)
+const [selectRadioButton, setSelectRadioButton] = useState(‘0’);
 ```
 Another function ,`isRadioSelected`, is created to determine true/false by comparing the current value and the `useState` variable. 
 ```jsx
