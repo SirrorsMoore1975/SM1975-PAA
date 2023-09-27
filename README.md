@@ -28,7 +28,7 @@ This file contains the routes and the client side endpoints for each separate pa
 
 `Card` - the cards that are displayed for each carrier on the Homepage  
 
-`Dropdown Menu` - the dropdown menu that allows user to select which carrier they are reviewing on the `Provider` page
+***`Dropdown Menu`*** - the dropdown menu that allows user to select which carrier they are reviewing on the `Provider` page. (<i>WIP</i>-  #031 )
 
 `Footer` - the footer that is displayed on all pages 
 
@@ -40,22 +40,22 @@ This file contains the routes and the client side endpoints for each separate pa
 
 `ProviderInfo` - displays the hero at the top of each carrier profile page
 
-`ProviderInfoNavBar` - provide components to navigate between carrier without first going back to the home page
+***`ProviderInfoNavBar`*** - provide components to navigate between carrier without first going back to the home page. Use the arrow key to navigate between the Provider Page and a new dropdown menu to change provider page
 
 `Radio` - Score system for user to choose 0 - 10
 
 `ReviewCard` - The components to show the average result score users has given
 
 ### Pages
-`ErrorPage` - dummy page for development purpose only
+***`ErrorPage`*** - dummy page for development purpose only
 
 `Homepage` - the homepage; this is the root path ("/"). 
 
-`Provider` - the page which display the provider info and its average scores.
+***`Provider`*** - the page which display the provider info and its average scores.
 
 `ReviewForm` - the page where the user will input their scores and write their review.
 
-`ThankYou` - the page that say thank you when review has successfully added.
+***`ThankYou`*** - the page that say thank you when review has successfully added.
 
 Additonally, there is a page for each of the nine carriers and a `Provider.css` page for styling these pages.  
 
