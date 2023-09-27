@@ -3,13 +3,13 @@
 Link to Deployed Site : https://phone-review-app.onrender.com/
 (Currently Not Available)
 
-### Introduction
+# Introduction
 ## What is Phone-Review-App?
 
 Phone-Review-App is a project that collect user's review over Japanese main phone carrier. Users can provider their view of each of the carrier they might have experienced.
 
 ## How to set up the project in local machine
-# For development
+### For development
 1. create `.env` and copy contents in `.env.example`, replace the field for `DB_NAME` and `DB_PASSWORD`, make note to the name use.
 1. run `psql` and create a database associate with the `DB_NAME`
 1. `npm run build` to install client's (React) and server's dependancy, if you have created the database, the knex migration and seed should work; but in case this fail, you can do migration using `npm run migrate` and seed using `npm run seed`;
@@ -21,14 +21,14 @@ Phone-Review-App is a project that collect user's review over Japanese main phon
 ## client/src/index.js
 This file contains the routes and the client side endpoints for each separate page
 
-## Components
+### Components
 `AvgScores` - displays all of the average scores on the carrier profile pages (the pink card)  
 
 `Button` - a template for most of the buttons on the app 
 
 `Card` - the cards that are displayed for each carrier on the Homepage  
 
-`Dropdown Menu` - the dropdown menu that allows user to select which carrier they are reviewing on the `Provider` page
+***`Dropdown Menu`*** - the dropdown menu that allows user to select which carrier they are reviewing on the `Provider` page. (<i>WIP</i>-  [#31](https://github.com/SirrorsMoore1975/SM1975-PAA/issues/31) )
 
 `Footer` - the footer that is displayed on all pages 
 
@@ -40,27 +40,43 @@ This file contains the routes and the client side endpoints for each separate pa
 
 `ProviderInfo` - displays the hero at the top of each carrier profile page
 
-`ProviderInfoNavBar` - provide components to navigate between carrier without first going back to the home page
+***`ProviderInfoNavBar`*** - provide components to navigate between carrier without first going back to the home page. Use the arrow key to navigate between the Provider Page and a new dropdown menu to change provider page ([#15](https://github.com/SirrorsMoore1975/SM1975-PAA/issues/15))
 
 `Radio` - Score system for user to choose 0 - 10
 
 `ReviewCard` - The components to show the average result score users has given
 
-## Pages
-`ErrorPage` - dummy page for development purpose only
+### Pages
+***`ErrorPage`*** - dummy page for development purpose only
 
 `Homepage` - the homepage; this is the root path ("/"). 
 
-`Provider` - the page which display the provider info and its average scores.
+***`Provider`*** - the page which display the provider info and its average scores.
 
 `ReviewForm` - the page where the user will input their scores and write their review.
 
-`ThankYou` - the page that say thank you when review has successfully added.
+***`ThankYou`*** - the page that say thank you when review has successfully added.
 
 Additonally, there is a page for each of the nine carriers and a `Provider.css` page for styling these pages.  
 
-## Radio.jsx
+### provider.json
+provider.json consist of `provider_id`, `value`, `text` and `path`:
+```json
+[
+    {
+        "provider_id":1,
+        "value":"Mobal",
+        "text":"Mobal",
+        "path":"/mobal"
+    },
+    {},
+]
 ```
+The problem is that, both the server and client are using the same data/provider.json to do their coding. This should change with an update to issue [#27](https://github.com/SirrorsMoore1975/SM1975-PAA/issues/27).
+
+### How does Radio.jsx run
+The following is the code inside Radio.jsx. 
+```jsx
 <span className={className}>
    {input.value}
     <br />
@@ -78,37 +94,46 @@ Additonally, there is a page for each of the nine carriers and a `Provider.css` 
         </input>
         </label>
 ```
-```
+```jsx
 <Radio 
-className = {string}, label={string}, radioName={string}, scoreSetter={function}/>
+  className={P:string} 
+  label={Q:string} 
+  radioName={R:string} 
+  scoreSetter={S:function}
+  />
 ```
 
 `radioName` is the radio name for all those name for radio, in this example, it is bob
 
 React in radio button uses a boolean method call `checked` to determine which buttons in the radio set are selected.
-```
-<input checked={ true } name=”bob” value=”0”>{ /* commercial secret */ }</input>
-<input checked={ false } name=”bob” value=”1”>{ /* commercial secret */ }</input>
-<input checked={ false } name=”bob” value=”2”>{ /* commercial secret */ }</input>
-```
+```jsx
 
-We have a `useState` that default the selected button to 0 score. And the same `useState` has function to change that selected button value. 
+<input checked={ true } name="bob" value="0">{ /* commercial secret */ }</input>
+
+<input checked={ false } name="bob" value="1">{ /* commercial secret */ }</input>
+
+<input checked={ false } name="bob" value="2">{ /* commercial secret */ }</input>
 ```
-const [selectRadioButton, setSelectRadioButton] = useState(‘0’)
+We have a `useState` that default the selected button to 0 score. And the same `useState` has function to change that selected button value. 
+```jsx
+const [selectRadioButton, setSelectRadioButton] = useState(‘0’);
 ```
 Another function ,`isRadioSelected`, is created to determine true/false by comparing the current value and the `useState` variable. 
-```
+```jsx
 const isRadioSelected = (value) => selectRadioButton === value
 ```
 This `isRadioSelected` function is placed on each button and linked to each button’s `checked` . When the `useState` function changes value (ie. user changing its score), the `isRadioSelected` return false, which make current button checked become false and since the value at the selected button is that given value, this make isRadioSelected which pointed to button checked became true.
 We used another function which handle Radio select (`handleRadioSelect`).
-```
+```jsx
 const handleRadioSelect = (event) => setSelectRadioButton(event.target.value);
 ```
-When radio button is change, selectRadioButton changes as onChange is linked to `handleRadioSelect`. Every button has this function at `onChange`, so when a button status change, it will follow:
+
+When radio button is changed, `selectRadioButton` changes as `onChange` is linked to `handleRadioSelect`. Every button has this function at `onChange`, so when a button status change, it will follows:
+
+```html
+<input checked={isRadioSelected(input.value)} onChange={handleRadioSelect} />
 ```
-<input checked={isRadioSelected(input.value) onChange={handleRadioSelect}>} </input>
-```
+
 When user decided to select other score, the function changed useState variable `selectRadioButton`, thereby causing previous selected button checked become false, the user now selected button has `checked` become true.
 
 # The Backend 
@@ -131,7 +156,7 @@ The endpoint `return`s (`res.send()`) back an array of objects, where each objec
 `overall` (float rounded to 2 decimal places) is the average of all overall scores of that provider.  
 
 example:
-```
+```jsx
 [
   {
     "id": 1,
@@ -182,7 +207,7 @@ This endpoint expects the body to contain the following information:
 `customer_review` (string) 
 
 example body:
-```
+```jsx
 {
     "provider_id":2,
     "reviewer_name": "Todd Rogers",
@@ -196,9 +221,27 @@ example body:
 }
 ```
 
-## Helpful Resources
+# Helpful Resources
 [React Router Docs](https://reactrouter.com/en/main) 
 
 [Faker JS Docs](https://fakerjs.dev/) 
 
 [Our Color Palette](https://colorhunt.co/palette/66bfbfeaf6f6ffffffff0063)
+
+# About Author
+
+I am SirrorsMoore1975 which can be found in [github](https://github.com/SirrorsMoore1975). 
+
+# About the origin of the project 
+This project is originally cloned from my team projects at [Phone-Review-App](https://github.com/Phone-Review-App/Phone-Review-App) which I decided to add my own favorite to it and leaving the legacy code intact.
+
+# LICENSE
+MIT License
+
+Copyright (c) 2023 SM1975-PAA
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
