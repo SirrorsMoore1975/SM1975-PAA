@@ -28,7 +28,7 @@ This file contains the routes and the client side endpoints for each separate pa
 
 `Card` - the cards that are displayed for each carrier on the Homepage  
 
-***`Dropdown Menu`*** - the dropdown menu that allows user to select which carrier they are reviewing on the `Provider` page. (<i>WIP</i>-  #031 )
+***`Dropdown Menu`*** - the dropdown menu that allows user to select which carrier they are reviewing on the `Provider` page. (<i>WIP</i>-  #31 )
 
 `Footer` - the footer that is displayed on all pages 
 
@@ -58,6 +58,21 @@ This file contains the routes and the client side endpoints for each separate pa
 ***`ThankYou`*** - the page that say thank you when review has successfully added.
 
 Additonally, there is a page for each of the nine carriers and a `Provider.css` page for styling these pages.  
+
+### provider.json
+provider.json consist of `provider_id`, `value`, `text` and `path`:
+```json
+[
+    {
+        "provider_id":1,
+        "value":"Mobal",
+        "text":"Mobal",
+        "path":"/mobal"
+    },
+    {},
+]
+```
+The problem is that, both the server and client are using the same data/provider.json to do their coding. This should change with an update to issue #27.
 
 ### How does Radio.jsx run
 The following is the code inside Radio.jsx. 
