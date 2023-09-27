@@ -59,7 +59,7 @@ This file contains the routes and the client side endpoints for each separate pa
 
 Additonally, there is a page for each of the nine carriers and a `Provider.css` page for styling these pages.  
 
-### Radio.jsx
+### How does Radio.jsx run
 The following is the code inside Radio.jsx. 
 ```jsx
 <span className={className}>
@@ -93,9 +93,11 @@ The following is the code inside Radio.jsx.
 React in radio button uses a boolean method call `checked` to determine which buttons in the radio set are selected.
 ```jsx
 
-  <input checked={ true } name="bob" value="0">{ /* commercial secret */ }</input>
-  <input checked={ false } name="bob" value="1">{ /* commercial secret */ }</input>
-  <input checked={ false } name="bob" value="2">{ /* commercial secret */ }</input>
+<input checked={ true } name="bob" value="0">{ /* commercial secret */ }</input>
+
+<input checked={ false } name="bob" value="1">{ /* commercial secret */ }</input>
+
+<input checked={ false } name="bob" value="2">{ /* commercial secret */ }</input>
 ```
 We have a `useState` that default the selected button to 0 score. And the same `useState` has function to change that selected button value. 
 ```jsx
@@ -110,10 +112,13 @@ We used another function which handle Radio select (`handleRadioSelect`).
 ```jsx
 const handleRadioSelect = (event) => setSelectRadioButton(event.target.value);
 ```
-When radio button is change, selectRadioButton changes as onChange is linked to `handleRadioSelect`. Every button has this function at `onChange`, so when a button status change, it will follow:
-```jsx
-<input checked={isRadioSelected(input.value)} onChange={handleRadioSelect}> </input>
+
+When radio button is changed, `selectRadioButton` changes as `onChange` is linked to `handleRadioSelect`. Every button has this function at `onChange`, so when a button status change, it will follows:
+
+```html
+<input checked={isRadioSelected(input.value)} onChange={handleRadioSelect} />
 ```
+
 When user decided to select other score, the function changed useState variable `selectRadioButton`, thereby causing previous selected button checked become false, the user now selected button has `checked` become true.
 
 # The Backend 
@@ -208,6 +213,12 @@ example body:
 
 [Our Color Palette](https://colorhunt.co/palette/66bfbfeaf6f6ffffffff0063)
 
+# About Author
+
+I am SirrorsMoore1975 which can be found in [github](https://github.com/SirrorsMoore1975). 
+
+# About the origin of the project 
+This project is originally cloned from my team projects at [Phone-Review-App](https://github.com/Phone-Review-App/Phone-Review-App) which I decided to add my own favorite to it and leaving the legacy code intact.
 
 # LICENSE
 MIT License
