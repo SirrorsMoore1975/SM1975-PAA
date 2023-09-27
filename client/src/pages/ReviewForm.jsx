@@ -7,7 +7,7 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 
 import Footer from '../components/Footer';
-import DropdownMenu from '../components/DropdownMenu';
+//import DropdownMenu from '../components/DropdownMenu';
 import Radio from '../components/Radio';
 
 import ThankYou from '../pages/ThankYou';
@@ -15,6 +15,27 @@ import ThankYou from '../pages/ThankYou';
 import providerJSON from "../data/provider.json";
 import "../styles/Form.css";
 
+const createReviewData = (provider_id,reviewer_name,email,overall,ease_of_use,coverage,price,customer_service,customer_review) => {
+  return {
+    provider_id,
+    reviewer_name,
+    email,
+    overall,
+    ease_of_use,
+    coverage,
+    price,
+    customer_service,
+    customer_review
+  }
+}
+
+const header = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+}
+
+const reviewData = 
+{
 const createReviewData = (provider_id,reviewer_name,email,overall,ease_of_use,coverage,price,customer_service,customer_review) => {
   return {
     provider_id,
@@ -48,6 +69,7 @@ const reviewData =
 };
 
 const ReviewForm = () => {
+  const { id } = useParams();
   const { id } = useParams();
   
   const [overAllScore, getOverAllScore] = useState(0);
