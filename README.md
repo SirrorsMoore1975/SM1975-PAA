@@ -28,7 +28,7 @@ This file contains the routes and the client side endpoints for each separate pa
 
 `Card` - the cards that are displayed for each carrier on the Homepage  
 
-***`Dropdown Menu`*** - the dropdown menu that allows user to select which carrier they are reviewing on the `Provider` page. (<i>WIP</i>-  #31 )
+***`Dropdown Menu`*** - the dropdown menu that allows user to select which carrier they are reviewing on the `Provider` page. (<i>WIP</i>-  [#31](https://github.com/SirrorsMoore1975/SM1975-PAA/issues/31) )
 
 `Footer` - the footer that is displayed on all pages 
 
@@ -40,7 +40,7 @@ This file contains the routes and the client side endpoints for each separate pa
 
 `ProviderInfo` - displays the hero at the top of each carrier profile page
 
-***`ProviderInfoNavBar`*** - provide components to navigate between carrier without first going back to the home page. Use the arrow key to navigate between the Provider Page and a new dropdown menu to change provider page
+***`ProviderInfoNavBar`*** - provide components to navigate between carrier without first going back to the home page. Use the arrow key to navigate between the Provider Page and a new dropdown menu to change provider page ([#15](https://github.com/SirrorsMoore1975/SM1975-PAA/issues/15))
 
 `Radio` - Score system for user to choose 0 - 10
 
@@ -72,7 +72,7 @@ provider.json consist of `provider_id`, `value`, `text` and `path`:
     {},
 ]
 ```
-The problem is that, both the server and client are using the same data/provider.json to do their coding. This should change with an update to issue #27.
+The problem is that, both the server and client are using the same data/provider.json to do their coding. This should change with an update to issue [#27](https://github.com/SirrorsMoore1975/SM1975-PAA/issues/27).
 
 ### How does Radio.jsx run
 The following is the code inside Radio.jsx. 
